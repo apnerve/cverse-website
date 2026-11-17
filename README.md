@@ -34,6 +34,8 @@ npm run og-image   # regenerate public/og-image.png
 
 ## Deployment
 
+Live preview: https://labs.apnerve.com/cverse-website/ (repo: https://github.com/apnerve/cverse-website)
+
 Pushes to `main` run `.github/workflows/deploy.yml`, which builds with `BASE_PATH=/<repo>/` and
 `SITE_URL=https://<owner>.github.io` and publishes `dist/` to GitHub Pages (no Jekyll; `public/.nojekyll`
 is included). For the production domain, build without those env vars (defaults: `/` and `https://cverse.ai`).
