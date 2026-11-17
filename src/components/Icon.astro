@@ -1,0 +1,20 @@
+---
+import {
+  Cpu, TrendingDown, Workflow, Layers, Globe, ShieldCheck, GitBranch,
+} from '@lucide/astro';
+import type { IconName } from '../data/site';
+
+interface Props { name: IconName; class?: string }
+const { name, class: className = 'h-5 w-5' } = Astro.props;
+const map = {
+  'cpu': Cpu,
+  'trending-down': TrendingDown,
+  'workflow': Workflow,
+  'layers': Layers,
+  'globe': Globe,
+  'shield-check': ShieldCheck,
+  'git-branch': GitBranch,
+};
+const Component = map[name];
+---
+<Component class={className} aria-hidden="true" stroke-width={1.75} />

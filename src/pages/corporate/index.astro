@@ -1,0 +1,9 @@
+---
+import Shell from '../../layouts/CorporateShell.astro';
+import Landing from '../../components/Landing.astro';
+import { withBase } from '../../lib/base';
+const base = withBase('/corporate/');
+---
+<Shell path="/corporate/">
+  <Landing variant="corporate" base={base} />
+</Shell>

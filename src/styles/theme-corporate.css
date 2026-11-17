@@ -1,0 +1,55 @@
+/* Version A: Corporate. Blue and white, Timeless Grotesk. */
+@import "@fontsource-variable/inter";
+
+:root {
+  --t-font-display: "Timeless Grotesk", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --t-font-body: "Timeless Grotesk", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --t-heading-weight: 600;
+  --t-display-tracking: -0.025em;
+
+  --t-surface: #ffffff;
+  --t-surface-2: #f5f7fa;
+  --t-card: #ffffff;
+  --t-line: #e3e8ef;
+  --t-line-strong: #cfd7e3;
+
+  --t-ink-950: #0b1324;
+  --t-ink-900: #15203a;
+  --t-ink-700: #344256;
+  --t-ink-600: #4b5a70;
+  --t-ink-500: #5a6980;
+  --t-ink-400: #8e9bae;
+  --t-ink-300: #c2cbd8;
+
+  --t-brand-50: #eaf1fd;
+  --t-brand-100: #d6e3fb;
+  --t-brand-200: #adc6f6;
+  --t-brand-300: #7fa6ee;
+  --t-brand-400: #4f84e4;
+  --t-brand-500: #2f66d6;
+  --t-brand-600: #1e4fc2;
+  --t-brand-700: #183f9c;
+  --t-brand-800: #142f73;
+  --t-brand-900: #0f2256;
+  --t-on-brand: #ffffff;
+  --t-heading-accent: var(--t-brand-800);
+  --t-highlight: #3fbf8f;
+
+  --t-code-bg: #0b1324;
+  --t-code-fg: #e6ebf2;
+  --t-code-key: #8fb3ff;
+  --t-code-dim: #7f8ca3;
+
+  --t-footer-bg: #0b1324;
+  --t-footer-fg: #ffffff;
+  --t-footer-muted: #a7b3c6;
+  --t-footer-line: rgb(255 255 255 / 0.1);
+  --t-footer-chip: rgb(255 255 255 / 0.06);
+
+  --t-radius: 0.375rem;
+  --t-radius-lg: 0.5rem;
+  --t-radius-btn: 0.375rem;
+  --t-shadow-card: 0 1px 2px rgb(11 19 36 / 0.04);
+  --t-shadow-card-hover: 0 8px 24px -12px rgb(11 19 36 / 0.18);
+  --t-shadow-btn: 0 1px 2px rgb(11 19 36 / 0.12);
+}

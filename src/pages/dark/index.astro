@@ -1,0 +1,9 @@
+---
+import Shell from '../../layouts/DarkShell.astro';
+import Landing from '../../components/Landing.astro';
+import { withBase } from '../../lib/base';
+const base = withBase('/dark/');
+---
+<Shell path="/dark/">
+  <Landing variant="dark" base={base} />
+</Shell>

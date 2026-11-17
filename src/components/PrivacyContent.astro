@@ -1,0 +1,89 @@
+---
+import { site } from '../data/site';
+---
+<p>
+  This Privacy Policy explains how {site.legalName} ("CVerse.ai", "we", "us") handles personal data when you
+  visit <a href={site.url}>{site.url.replace('https://', '')}</a> (the "Site") or contact us. We are a company
+  registered in the United Arab Emirates and process personal data in accordance with UAE Federal Decree-Law
+  No. 45 of 2021 on the Protection of Personal Data and other applicable laws.
+</p>
+
+<h2>Who we are</h2>
+<p>
+  {site.legalName}<br />
+  {site.address.lines[0]}, {site.address.lines[1]}<br />
+  Email: <a href={`mailto:${site.email}`}>{site.email}</a>
+</p>
+
+<h2>What data we collect</h2>
+<p>The Site is an informational website. It has no user accounts, forms or comment features.</p>
+<ul>
+  <li>
+    <strong>Technical data.</strong> When you visit the Site, our hosting provider automatically records
+    standard server log data such as your IP address, browser type, device type, referring page, pages
+    viewed and timestamps. This is used to deliver the Site, keep it secure and understand aggregate usage.
+  </li>
+  <li>
+    <strong>Correspondence.</strong> If you email us, we receive your email address, name and whatever
+    you choose to include in your message. We use it to reply to you and, where relevant, to prepare a
+    proposal or enter into a business relationship.
+  </li>
+</ul>
+<p>We do not knowingly collect personal data from children under 18.</p>
+
+<h2>Cookies and analytics</h2>
+<p>
+  The Site does not set advertising or tracking cookies and does not use third-party analytics scripts.
+  Fonts and other assets are served from our own domain. If we introduce analytics in the future we will
+  update this policy and, where required, ask for your consent first.
+</p>
+
+<h2>Why we process your data</h2>
+<ul>
+  <li>To operate, secure and improve the Site (our legitimate interest).</li>
+  <li>To respond to enquiries and manage prospective and existing client relationships (performance of a contract or steps prior to a contract).</li>
+  <li>To comply with legal obligations.</li>
+</ul>
+
+<h2>Sharing</h2>
+<p>
+  We share personal data only with service providers who help us run the Site and our business (for example
+  web hosting and email providers), and only to the extent needed for them to provide their services. We may
+  also disclose data where required by law or to protect our rights. We do not sell personal data.
+</p>
+
+<h2>International transfers</h2>
+<p>
+  Our service providers may store data outside the UAE. Where that happens we take steps to ensure the data
+  receives an adequate level of protection, such as contractual safeguards.
+</p>
+
+<h2>Retention</h2>
+<p>
+  Server logs are kept for a limited period for security purposes and then deleted or anonymized. Business
+  correspondence is kept for as long as needed to manage the relationship and to meet legal, accounting and
+  record-keeping requirements.
+</p>
+
+<h2>Your rights</h2>
+<p>
+  Subject to applicable law, you may request access to, correction of, or deletion of your personal data,
+  object to or restrict certain processing, and withdraw consent where processing is based on consent. To
+  exercise these rights, email <a href={`mailto:${site.email}`}>{site.email}</a>. You may also have the right
+  to lodge a complaint with the UAE Data Office.
+</p>
+
+<h2>Security</h2>
+<p>
+  We use appropriate technical and organizational measures to protect personal data, including encrypted
+  connections (HTTPS) and access controls. No method of transmission or storage is completely secure.
+</p>
+
+<h2>Changes to this policy</h2>
+<p>
+  We may update this policy from time to time. The "Last updated" date at the top shows when it last
+  changed. Material changes will be highlighted on this page.
+</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy or our data practices: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>

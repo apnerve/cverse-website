@@ -1,0 +1,13 @@
+---
+import Shell from '../../layouts/MotionShell.astro';
+import LegalPage from '../../components/LegalPage.astro';
+import TermsContent from '../../components/TermsContent.astro';
+import { site } from '../../data/site';
+import { withBase } from '../../lib/base';
+const base = withBase('/motion/');
+---
+<Shell path="/motion/terms/" title={`Terms of Service — ${site.name}`} description={`Terms governing use of the ${site.name} website.`}>
+  <LegalPage base={base} title="Terms of Service" updated="17 November 2026">
+    <TermsContent />
+  </LegalPage>
+</Shell>

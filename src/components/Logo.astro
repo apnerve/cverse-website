@@ -1,0 +1,13 @@
+---
+interface Props { base: string; size?: 'sm' | 'lg'; inverted?: boolean }
+const { base, size = 'sm', inverted = false } = Astro.props;
+const box = size === 'lg' ? 'h-9 w-9 text-lg' : 'h-8 w-8 text-base';
+const text = size === 'lg' ? 'text-2xl font-bold' : 'text-base font-semibold';
+const tile = inverted
+  ? 'bg-footer-fg text-footer-bg'
+  : 'bg-ink-950 text-surface';
+---
+<a href={base} class="flex items-center gap-2.5" aria-label="CVerse.ai home">
+  <span class={`flex items-center justify-center rounded-ui font-display font-bold ${box} ${tile}`} aria-hidden="true">C</span>
+  <span class={`font-display tracking-tight ${text} ${inverted ? 'text-footer-fg' : 'text-ink-950'}`}>CVerse.ai</span>
+</a>

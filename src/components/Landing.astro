@@ -1,0 +1,20 @@
+---
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Services from './Services.astro';
+import Why from './Why.astro';
+import About from './About.astro';
+import Footer from './Footer.astro';
+import type { Variant } from '../data/site';
+
+interface Props { variant: Variant; base: string }
+const { variant, base } = Astro.props;
+---
+<Header base={base} />
+<main id="main">
+  <Hero variant={variant} />
+  <Services />
+  <Why />
+  <About />
+</main>
+<Footer base={base} />

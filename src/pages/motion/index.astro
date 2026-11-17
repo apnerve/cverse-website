@@ -1,0 +1,9 @@
+---
+import Shell from '../../layouts/MotionShell.astro';
+import Landing from '../../components/Landing.astro';
+import { withBase } from '../../lib/base';
+const base = withBase('/motion/');
+---
+<Shell path="/motion/">
+  <Landing variant="motion" base={base} />
+</Shell>

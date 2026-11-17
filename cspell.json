@@ -1,0 +1,57 @@
+{
+  "version": "0.2",
+  "language": "en,en-GB",
+  "dictionaries": [
+    "en_US",
+    "en-gb",
+    "softwareTerms",
+    "companies"
+  ],
+  "words": [
+    "CVerse",
+    "LLMOps",
+    "LLMs",
+    "LLM",
+    "FZCO",
+    "agentic",
+    "Agentic",
+    "onprem",
+    "prem",
+    "RAG",
+    "Grotesk",
+    "Allo",
+    "Astro",
+    "Tailwind",
+    "Dubai",
+    "Silicon",
+    "Oasis",
+    "DDP",
+    "Puckett",
+    "woff",
+    "favicon",
+    "sitemap",
+    "Playwright",
+    "anonymised",
+    "organisational",
+    "organisations",
+    "unauthorised",
+    "SOC",
+    "PII",
+    "GCP",
+    "AWS",
+    "Azure",
+    "Emirates",
+    "Decree",
+    "lucide"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist/_astro",
+    "**/*.woff2",
+    "package-lock.json"
+  ],
+  "ignoreRegExpList": [
+    "/[A-Za-z0-9_-]{20,}/",
+    "/\\b[a-z]+\\.[A-Za-z0-9]{8}\\.(css|js|woff2)\\b/"
+  ]
+}

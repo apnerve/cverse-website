@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+import type { Variant } from '../data/site';
+import { withBase } from '../lib/base';
+
+interface Props {
+  variant: Variant;
+  title?: string;
+  description?: string;
+  /** Path of this page, e.g. "/corporate/" — used for the canonical URL. */
+  path: string;
+}
+const { variant, title = site.title, description = site.description, path } = Astro.props;
+const canonical = new URL(path, site.url).href;
+const ogImage = new URL('/og-image.png', site.url).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  legalName: site.legalName,
+  url: site.url,
+  email: site.email,
+  description: site.description,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.lines[0],
+    addressLocality: site.address.locality,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  sameAs: [site.social.linkedin, site.social.x].filter(Boolean),
+};
+---
+<!doctype html>
+<html lang="en" data-variant={variant}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
+    <meta name="theme-color" content={variant === 'dark' ? '#0b1117' : '#ffffff'} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <slot name="head" />
+  </head>
+  <body class="min-h-screen">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-ui focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-on-brand">Skip to content</a>
+    <slot />
+  </body>
+</html>

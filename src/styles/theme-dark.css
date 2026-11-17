@@ -1,0 +1,58 @@
+/* Version B: Dark mode with teal, Space Grotesk. */
+@import "@fontsource-variable/space-grotesk";
+
+:root {
+  color-scheme: dark;
+  --t-font-display: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --t-font-body: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --t-heading-weight: 600;
+  --t-display-tracking: -0.02em;
+
+  --t-surface: #0b1117;
+  --t-surface-2: #0f161e;
+  --t-card: #121b24;
+  --t-line: rgb(255 255 255 / 0.08);
+  --t-line-strong: rgb(255 255 255 / 0.16);
+
+  /* Inverted neutral scale: 950 is the brightest text. */
+  --t-ink-950: #f2f6f8;
+  --t-ink-900: #e2e9ee;
+  --t-ink-700: #c0ccd4;
+  --t-ink-600: #97a6b1;
+  --t-ink-500: #7a8993;
+  --t-ink-400: #5c6a74;
+  --t-ink-300: #3b4750;
+
+  --t-brand-50: rgb(45 212 191 / 0.1);
+  --t-brand-100: rgb(45 212 191 / 0.16);
+  --t-brand-200: rgb(45 212 191 / 0.3);
+  --t-brand-300: #5eead4;
+  --t-brand-400: #2dd4bf;
+  --t-brand-500: #14b8a6;
+  --t-brand-600: #14b8a6;
+  --t-brand-700: #2dd4bf;
+  --t-brand-800: #5eead4;
+  --t-brand-900: #99f6e4;
+  --t-on-brand: #04201c;
+  --t-heading-accent: #5eead4;
+  --t-highlight: #5eead4;
+
+  --t-code-bg: #060a0f;
+  --t-code-fg: #dbe5ec;
+  --t-code-key: #5eead4;
+  --t-code-dim: #7f8d97;
+
+  --t-footer-bg: #060a0f;
+  --t-footer-fg: #f2f6f8;
+  --t-footer-muted: #8d9ca6;
+  --t-footer-line: rgb(255 255 255 / 0.08);
+  --t-footer-chip: rgb(255 255 255 / 0.06);
+
+  --t-btn-secondary-bg: rgb(255 255 255 / 0.03);
+  --t-radius: 0.5rem;
+  --t-radius-lg: 0.75rem;
+  --t-radius-btn: 0.5rem;
+  --t-shadow-card: 0 0 0 1px rgb(0 0 0 / 0.2);
+  --t-shadow-card-hover: 0 12px 32px -16px rgb(20 184 166 / 0.25);
+  --t-shadow-btn: 0 0 0 1px rgb(20 184 166 / 0.4), 0 6px 20px -10px rgb(20 184 166 / 0.6);
+}
