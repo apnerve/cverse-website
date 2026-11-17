@@ -7,9 +7,9 @@ import type { Variant } from '../data/site';
 interface Props { variant: Variant }
 const { variant } = Astro.props;
 ---
-<section id="top" class="relative overflow-hidden border-b border-line bg-surface">
+<section id="top" class="relative -mt-16 overflow-hidden border-b border-line bg-surface">
   {/* Background treatment per version */}
-  {variant === 'motion' && (
+  {(variant === 'motion' || variant === 'corporate') && (
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
       <div class="hero-blob hero-blob-a -left-[10%] -top-[20%] h-[34rem] w-[34rem]" style="background: var(--spot-blue); opacity: .16"></div>
       <div class="hero-blob hero-blob-b left-[45%] -top-[30%] h-[30rem] w-[30rem]" style="background: var(--spot-indigo); opacity: .14"></div>
@@ -18,9 +18,6 @@ const { variant } = Astro.props;
       <div class="hero-grid absolute inset-0 opacity-70"></div>
     </div>
   )}
-  {variant === 'corporate' && (
-    <div aria-hidden="true" class="hero-grid pointer-events-none absolute inset-0 opacity-60"></div>
-  )}
   {variant === 'dark' && (
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
       <div class="absolute inset-x-0 -top-40 mx-auto h-[32rem] w-[52rem] max-w-full rounded-full opacity-25 blur-3xl" style="background: radial-gradient(closest-side, var(--t-brand-500), transparent)"></div>
@@ -28,7 +25,7 @@ const { variant } = Astro.props;
     </div>
   )}
 
-  <div class="container-page relative py-20 sm:py-28 lg:py-32">
+  <div class="container-page relative pb-20 pt-36 sm:pb-28 sm:pt-44 lg:pb-32 lg:pt-48">
     <div class="grid items-center gap-12 lg:grid-cols-12">
       <div class="lg:col-span-7">
         <p class="eyebrow rise rise-1">{hero.eyebrow}</p>

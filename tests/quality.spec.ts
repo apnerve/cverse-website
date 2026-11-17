@@ -26,7 +26,7 @@ for (const path of allPages) {
 
     // Exactly one h1, a title and a meta description.
     await expect(page.locator('h1')).toHaveCount(1);
-    expect(await page.title()).toMatch(/CVerse/);
+    expect(await page.title()).toMatch(/cverse/i);
     const desc = await page.locator('meta[name="description"]').getAttribute('content');
     expect(desc && desc.length).toBeGreaterThan(40);
 
@@ -62,11 +62,11 @@ for (const v of variants) {
     const family = await page.locator('h1').evaluate((el) => getComputedStyle(el).fontFamily);
     expect(family).toContain(expectedFont[v]);
     const loaded = await page.evaluate((f) => document.fonts.check(`600 16px "${f}"`), expectedFont[v]);
+    expect(loaded, `${expectedFont[v]} should be loaded`).toBe(true);
     if (v === 'corporate') {
-      // Falls back to Inter until the Timeless Grotesk files are added to /public/fonts/timeless/.
-      test.info().annotations.push({ type: 'note', description: `Timeless Grotesk loaded: ${loaded}` });
-    } else {
-      expect(loaded, `${expectedFont[v]} should be loaded`).toBe(true);
+      // Body falls back to Inter until the Timeless Grotesk files are added to /public/fonts/timeless/.
+      const body = await page.evaluate(() => document.fonts.check('400 16px "Timeless Grotesk"'));
+      test.info().annotations.push({ type: 'note', description: `Timeless Grotesk (body) loaded: ${body}` });
     }
   });
 }

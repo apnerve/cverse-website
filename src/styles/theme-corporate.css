@@ -1,55 +1,84 @@
-/* Version A: Corporate. Blue and white, Timeless Grotesk. */
+/* Version A: Corporate. Brand palette (Obsidian, Snow, Zinc, Slate, Route Blue, Signal Teal).
+   Headlines in Space Grotesk, body in Timeless Grotesk with Inter as fallback. */
+@import "@fontsource-variable/space-grotesk";
 @import "@fontsource-variable/inter";
 
 :root {
-  --t-font-display: "Timeless Grotesk", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --t-font-display: "Space Grotesk Variable", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --t-font-body: "Timeless Grotesk", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --t-heading-weight: 600;
-  --t-display-tracking: -0.025em;
+  --t-heading-weight: 700; /* Space Grotesk's heaviest weight */
+  --t-display-tracking: -0.03em;
 
-  --t-surface: #ffffff;
-  --t-surface-2: #f5f7fa;
+  /* Brand neutrals */
+  --obsidian: #09090B;
+  --snow: #F8FAFC;
+  --zinc: #A1A1AA;
+  --slate: #52525B;
+  --route-blue: #3B82F6;
+  --signal-teal: #2DD4BF;
+
+  --t-surface: var(--snow);
+  --t-surface-2: color-mix(in srgb, var(--obsidian) 3%, var(--snow));
   --t-card: #ffffff;
-  --t-line: #e3e8ef;
-  --t-line-strong: #cfd7e3;
+  --t-line: color-mix(in srgb, var(--obsidian) 8%, transparent);
+  --t-line-strong: color-mix(in srgb, var(--obsidian) 16%, transparent);
 
-  --t-ink-950: #0b1324;
-  --t-ink-900: #15203a;
-  --t-ink-700: #344256;
-  --t-ink-600: #4b5a70;
-  --t-ink-500: #5a6980;
-  --t-ink-400: #8e9bae;
-  --t-ink-300: #c2cbd8;
+  --t-ink-950: var(--obsidian);
+  --t-ink-900: color-mix(in srgb, var(--obsidian) 92%, var(--snow));
+  --t-ink-700: color-mix(in srgb, var(--obsidian) 76%, var(--snow));
+  --t-ink-600: var(--slate);
+  --t-ink-500: color-mix(in srgb, var(--obsidian) 58%, var(--snow));
+  --t-ink-400: var(--zinc);
+  --t-ink-300: color-mix(in srgb, var(--obsidian) 24%, var(--snow));
 
-  --t-brand-50: #eaf1fd;
-  --t-brand-100: #d6e3fb;
-  --t-brand-200: #adc6f6;
-  --t-brand-300: #7fa6ee;
-  --t-brand-400: #4f84e4;
-  --t-brand-500: #2f66d6;
-  --t-brand-600: #1e4fc2;
-  --t-brand-700: #183f9c;
-  --t-brand-800: #142f73;
-  --t-brand-900: #0f2256;
-  --t-on-brand: #ffffff;
-  --t-heading-accent: var(--t-brand-800);
-  --t-highlight: #3fbf8f;
+  /* One blue; lighter steps are tints of it on Snow */
+  --t-brand-50: color-mix(in srgb, var(--route-blue) 8%, var(--snow));
+  --t-brand-100: color-mix(in srgb, var(--route-blue) 14%, var(--snow));
+  --t-brand-200: color-mix(in srgb, var(--route-blue) 28%, var(--snow));
+  --t-brand-300: color-mix(in srgb, var(--route-blue) 50%, var(--snow));
+  --t-brand-400: color-mix(in srgb, var(--route-blue) 75%, var(--snow));
+  --t-brand-500: var(--route-blue);
+  --t-brand-600: var(--route-blue);
+  --t-brand-700: var(--route-blue);
+  --t-brand-800: var(--route-blue);
+  --t-brand-900: var(--route-blue);
+  --t-on-brand: var(--snow);
+  --t-heading-accent: var(--route-blue);
+  --t-highlight: var(--signal-teal);
 
-  --t-code-bg: #0b1324;
-  --t-code-fg: #e6ebf2;
-  --t-code-key: #8fb3ff;
-  --t-code-dim: #7f8ca3;
+  /* Small text never sits in Route Blue on Snow (3.7:1); these fall back to ink */
+  --t-eyebrow: var(--slate);
+  --t-icon-fg: var(--route-blue);
+  --t-link: var(--obsidian);
+  --t-link-underline: var(--route-blue);
+  --t-link-hover: var(--route-blue);
 
-  --t-footer-bg: #0b1324;
-  --t-footer-fg: #ffffff;
-  --t-footer-muted: #a7b3c6;
-  --t-footer-line: rgb(255 255 255 / 0.1);
-  --t-footer-chip: rgb(255 255 255 / 0.06);
+  /* Primary action is Obsidian; blue is reserved for the c, the cursor and accents */
+  --t-btn-bg: var(--obsidian);
+  --t-btn-fg: var(--snow);
+  --t-btn-hover: color-mix(in srgb, var(--obsidian) 84%, var(--snow));
+
+  --t-code-bg: var(--obsidian);
+  --t-code-fg: var(--snow);
+  --t-code-key: var(--route-blue);
+  --t-code-dim: var(--zinc);
+
+  --t-footer-bg: var(--obsidian);
+  --t-footer-fg: var(--snow);
+  --t-footer-muted: var(--zinc);
+  --t-footer-line: rgb(248 250 252 / 0.1);
+  --t-footer-chip: rgb(248 250 252 / 0.06);
 
   --t-radius: 0.375rem;
   --t-radius-lg: 0.5rem;
   --t-radius-btn: 0.375rem;
-  --t-shadow-card: 0 1px 2px rgb(11 19 36 / 0.04);
-  --t-shadow-card-hover: 0 8px 24px -12px rgb(11 19 36 / 0.18);
-  --t-shadow-btn: 0 1px 2px rgb(11 19 36 / 0.12);
+  --t-shadow-card: 0 1px 2px rgb(9 9 11 / 0.04);
+  --t-shadow-card-hover: 0 8px 24px -12px rgb(9 9 11 / 0.18);
+  --t-shadow-btn: 0 1px 2px rgb(9 9 11 / 0.12);
+
+  /* Hero blob colours for the animated background (same markup as the Motion version). */
+  --spot-blue: var(--t-brand-400);
+  --spot-indigo: var(--t-brand-500);
+  --spot-teal: var(--t-brand-300);
+  --spot-yellow: var(--t-brand-100);
 }

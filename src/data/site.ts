@@ -24,11 +24,11 @@ export const variants: Record<Variant, { name: string; blurb: string; font: stri
 };
 
 export const site = {
-  name: 'CVerse.ai',
+  name: 'cverse',
   legalName: 'CVerse Ventures FZCO',
-  title: 'CVerse.ai — Enterprise AI-Native Services & Solutions',
+  title: 'cverse — Enterprise AI-Native Services & Solutions',
   description:
-    'CVerse.ai designs, engineers, and deploys enterprise AI: LLMOps and conversational AI, process automation and analytics, custom agentic workflows, and model fine-tuning for large organizations.',
+    'cverse designs, engineers, and deploys enterprise AI: LLMOps and conversational AI, process automation and analytics, custom agentic workflows, and model fine-tuning for large organizations.',
   url: 'https://cverse.ai',
   email: 'info@cverse.ai',
   address: {
@@ -49,7 +49,7 @@ export const site = {
 
 export const nav = [
   { label: 'Services', href: '#services' },
-  { label: 'Why CVerse', href: '#why-cverse' },
+  { label: 'Why cverse', href: '#why-cverse' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -63,7 +63,7 @@ export const hero = {
   primaryCta: { label: 'Explore Services', href: '#services' },
   secondaryCta: { label: 'Get in Touch', href: '#contact' },
   panel: {
-    heading: 'CVerse.ai',
+    heading: 'cverse',
     caption: 'system status',
     code: [
       { comment: '# enterprise deployment' },
@@ -148,7 +148,7 @@ export const pillars: { icon: IconName; title: string; short: string; descriptio
 ];
 
 export const whySection = {
-  eyebrow: 'Why CVerse',
+  eyebrow: 'Why cverse',
   title: 'Engineered for Enterprise Scale',
   intro:
     "We don't just build models; we build systems. Our approach focuses on the rigorous requirements of global enterprises, ensuring reliability, security, and measurable ROI.",
@@ -158,7 +158,7 @@ export const aboutSection = {
   eyebrow: 'About',
   title: 'The strategic partner for enterprises',
   intro:
-    'CVerse.ai is the strategic partner for enterprises looking to leverage AI at scale. We build the infrastructure and intelligence that powers the next generation of industry solutions.',
+    'cverse is the strategic partner for enterprises looking to leverage AI at scale. We build the infrastructure and intelligence that powers the next generation of industry solutions.',
 };
 
 export const aboutPoints = [

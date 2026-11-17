@@ -6,7 +6,7 @@ export const legalPages = variants.flatMap((v) => [`/${v}/privacy/`, `/${v}/term
 export const allPages = ['/', ...landingPages, ...legalPages];
 
 export const expectedFont: Record<Variant, string> = {
-  corporate: 'Timeless Grotesk',
+  corporate: 'Space Grotesk Variable',
   dark: 'Space Grotesk Variable',
   motion: 'Allo',
 };

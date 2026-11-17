@@ -12,12 +12,12 @@ const tile = inverted
   : 'bg-ink-950 text-surface';
 ---
 {useWordmark ? (
-  <a href={base} class={`flex items-center ${inverted ? 'text-footer-fg' : 'text-ink-950'}`} aria-label="CVerse.ai home">
+  <a href={base} class={`flex items-center ${inverted ? 'text-footer-fg' : 'text-ink-950'}`} aria-label="cverse home">
     <Wordmark height={size === 'lg' ? 22 : 18} />
   </a>
 ) : (
-  <a href={base} class="flex items-center gap-2.5" aria-label="CVerse.ai home">
+  <a href={base} class="flex items-center gap-2.5" aria-label="cverse home">
     <span class={`flex items-center justify-center rounded-ui font-display font-bold ${box} ${tile}`} aria-hidden="true">C</span>
-    <span class={`font-display tracking-tight ${text} ${inverted ? 'text-footer-fg' : 'text-ink-950'}`}>CVerse.ai</span>
+    <span class={`font-display tracking-tight ${text} ${inverted ? 'text-footer-fg' : 'text-ink-950'}`}>cverse</span>
   </a>
 )}

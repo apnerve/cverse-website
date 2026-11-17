@@ -7,7 +7,7 @@ import type { Variant } from '../data/site';
 interface Props { base: string; variant?: Variant }
 const { base, variant } = Astro.props;
 ---
-<header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-surface transition-[background-color,border-color,box-shadow] duration-200">
+<header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-transparent transition-[background-color,border-color,box-shadow] duration-200">
   <div class="container-page flex h-16 items-center justify-between gap-4">
     <Logo base={base} variant={variant} />
 
@@ -60,7 +60,9 @@ const { base, variant } = Astro.props;
     const scrolled = window.scrollY > 8;
     header.classList.toggle('border-line', scrolled);
     header.classList.toggle('border-transparent', !scrolled);
-    header.classList.toggle('shadow-[0_1px_0_0_var(--t-line)]', scrolled);
+    header.classList.toggle('bg-surface/90', scrolled);
+    header.classList.toggle('backdrop-blur-md', scrolled);
+    header.classList.toggle('bg-transparent', !scrolled);
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
