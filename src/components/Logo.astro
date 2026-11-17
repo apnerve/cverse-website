@@ -1,13 +1,23 @@
 ---
-interface Props { base: string; size?: 'sm' | 'lg'; inverted?: boolean }
-const { base, size = 'sm', inverted = false } = Astro.props;
+import Wordmark from './Wordmark.astro';
+import type { Variant } from '../data/site';
+
+interface Props { base: string; size?: 'sm' | 'lg'; inverted?: boolean; variant?: Variant }
+const { base, size = 'sm', inverted = false, variant } = Astro.props;
+const useWordmark = variant === 'corporate';
 const box = size === 'lg' ? 'h-9 w-9 text-lg' : 'h-8 w-8 text-base';
 const text = size === 'lg' ? 'text-2xl font-bold' : 'text-base font-semibold';
 const tile = inverted
   ? 'bg-footer-fg text-footer-bg'
   : 'bg-ink-950 text-surface';
 ---
-<a href={base} class="flex items-center gap-2.5" aria-label="CVerse.ai home">
-  <span class={`flex items-center justify-center rounded-ui font-display font-bold ${box} ${tile}`} aria-hidden="true">C</span>
-  <span class={`font-display tracking-tight ${text} ${inverted ? 'text-footer-fg' : 'text-ink-950'}`}>CVerse.ai</span>
-</a>
+{useWordmark ? (
+  <a href={base} class={`flex items-center ${inverted ? 'text-footer-fg' : 'text-ink-950'}`} aria-label="CVerse.ai home">
+    <Wordmark height={size === 'lg' ? 22 : 18} />
+  </a>
+) : (
+  <a href={base} class="flex items-center gap-2.5" aria-label="CVerse.ai home">
+    <span class={`flex items-center justify-center rounded-ui font-display font-bold ${box} ${tile}`} aria-hidden="true">C</span>
+    <span class={`font-display tracking-tight ${text} ${inverted ? 'text-footer-fg' : 'text-ink-950'}`}>CVerse.ai</span>
+  </a>
+)}

@@ -10,11 +10,11 @@ import type { Variant } from '../data/site';
 interface Props { variant: Variant; base: string }
 const { variant, base } = Astro.props;
 ---
-<Header base={base} />
+<Header base={base} variant={variant} />
 <main id="main">
   <Hero variant={variant} />
   <Services />
   <Why />
   <About />
 </main>
-<Footer base={base} />
+<Footer base={base} variant={variant} />

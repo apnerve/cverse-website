@@ -3,8 +3,10 @@ import { Mail, MapPin } from '@lucide/astro';
 import Logo from './Logo.astro';
 import { site, footer } from '../data/site';
 
-interface Props { base: string }
-const { base } = Astro.props;
+import type { Variant } from '../data/site';
+
+interface Props { base: string; variant?: Variant }
+const { base, variant } = Astro.props;
 const year = new Date().getFullYear();
 const socials = [
   site.social.linkedin && { label: 'LinkedIn', href: site.social.linkedin, kind: 'linkedin' as const },
@@ -16,7 +18,7 @@ const socials = [
     <h2 id="contact-title" class="sr-only">Contact</h2>
     <div class="grid gap-12 md:grid-cols-12">
       <div class="md:col-span-5">
-        <Logo base={base} size="lg" inverted />
+        <Logo base={base} size="lg" inverted variant={variant} />
         <p class="mt-5 max-w-md text-sm leading-relaxed text-footer-muted">{footer.blurb}</p>
         <ul class="mt-6 flex gap-3" aria-label="Social and contact links">
           {socials.map((s) => (

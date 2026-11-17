@@ -7,7 +7,7 @@ import { withBase } from '../../lib/base';
 const base = withBase('/corporate/');
 ---
 <Shell path="/corporate/terms/" title={`Terms of Service — ${site.name}`} description={`Terms governing use of the ${site.name} website.`}>
-  <LegalPage base={base} title="Terms of Service" updated="17 November 2026">
+  <LegalPage base={base} variant="corporate" title="Terms of Service" updated="17 November 2026">
     <TermsContent />
   </LegalPage>
 </Shell>

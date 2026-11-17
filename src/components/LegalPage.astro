@@ -2,10 +2,12 @@
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 
-interface Props { base: string; title: string; updated: string }
-const { base, title, updated } = Astro.props;
+import type { Variant } from '../data/site';
+
+interface Props { base: string; title: string; updated: string; variant?: Variant }
+const { base, title, updated, variant } = Astro.props;
 ---
-<Header base={base} />
+<Header base={base} variant={variant} />
 <main id="main" class="bg-surface">
   <article class="container-page py-16 sm:py-20">
     <div class="max-w-3xl">
@@ -18,4 +20,4 @@ const { base, title, updated } = Astro.props;
     </div>
   </article>
 </main>
-<Footer base={base} />
+<Footer base={base} variant={variant} />

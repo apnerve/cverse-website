@@ -2,13 +2,14 @@
 import { ArrowRight, Menu, X } from '@lucide/astro';
 import Logo from './Logo.astro';
 import { nav } from '../data/site';
+import type { Variant } from '../data/site';
 
-interface Props { base: string }
-const { base } = Astro.props;
+interface Props { base: string; variant?: Variant }
+const { base, variant } = Astro.props;
 ---
 <header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-surface transition-[background-color,border-color,box-shadow] duration-200">
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <Logo base={base} />
+    <Logo base={base} variant={variant} />
 
     <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
       {nav.map((item) => (
