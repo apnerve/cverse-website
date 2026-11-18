@@ -20,9 +20,9 @@ p{margin:26px 0 0;font-size:27px;color:#A1A1AA;max-width:860px;line-height:1.4;f
 .eyebrow{position:absolute;bottom:72px;left:80px;font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;font-weight:500;font-family:ui-monospace,Menlo,monospace}
 </style></head><body><div class="wrap">
 <div class="logo">${wordmark}</div>
-<h1>Architecting AI Systems <em>at Enterprise Scale</em></h1>
-<p>LLMOps, custom agentic workflows and custom LLM development for large organizations.</p>
-<div class="eyebrow">AI-Native Services</div>
+<h1>AI systems that <em>run in production.</em></h1>
+<p>LLM, agent, and forecasting systems for enterprises, built and run in your own cloud.</p>
+<div class="eyebrow">AI engineering for enterprises</div>
 </div></body></html>`;
 
 import { existsSync } from 'node:fs';

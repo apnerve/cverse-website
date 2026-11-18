@@ -13,6 +13,12 @@ export default defineConfig({
   site,
   base,
   integrations: [sitemap()],
+  // The site was previewed at /exec/ before it became the only version.
+  // Destinations are not base-aware, so prefix them by hand.
+  redirects: {
+    '/exec/': base,
+    '/exec/privacy/': `${base}privacy/`,
+  },
   vite: {
     plugins: [tailwindcss()],
   },

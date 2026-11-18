@@ -1,7 +1,7 @@
 ---
 import { ArrowRight, Mail } from '@lucide/astro';
-import { execContact as c } from '../../data/exec';
-import { site } from '../../data/site';
+import { execContact as c } from '../data/exec';
+import { site } from '../data/site';
 ---
 <section id="contact" class="border-b border-line bg-surface-2" aria-labelledby="contact-title">
   <div class="container-page py-20 sm:py-24">
@@ -13,7 +13,7 @@ import { site } from '../../data/site';
           <p class="lead mt-5">{c.body}</p>
         </div>
         <div class="lg:col-span-5 lg:justify-self-end">
-          <a href={`mailto:${site.email}`} class="btn btn-primary w-full sm:w-auto">
+          <a href={`mailto:${site.email}`} class="btn btn-primary w-full sm:w-auto" data-cta>
             {c.cta}
             <ArrowRight class="btn-icon h-4 w-4" aria-hidden="true" />
           </a>

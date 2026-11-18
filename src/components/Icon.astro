@@ -1,19 +1,25 @@
 ---
 import {
-  Cpu, TrendingDown, Workflow, Layers, Globe, ShieldCheck, GitBranch,
+  Bot, ChartLine, Workflow, Lock, Gauge, Server, Users, Phone, Search, GitBranch, Handshake, FileCheck, Database,
 } from '@lucide/astro';
-import type { IconName } from '../data/site';
+import type { ExecIcon } from '../data/exec';
 
-interface Props { name: IconName; class?: string }
+interface Props { name: ExecIcon; class?: string }
 const { name, class: className = 'h-5 w-5' } = Astro.props;
 const map = {
-  'cpu': Cpu,
-  'trending-down': TrendingDown,
+  'bot': Bot,
+  'chart-line': ChartLine,
   'workflow': Workflow,
-  'layers': Layers,
-  'globe': Globe,
-  'shield-check': ShieldCheck,
+  'lock': Lock,
+  'gauge': Gauge,
+  'server': Server,
+  'users': Users,
+  'phone': Phone,
+  'search': Search,
   'git-branch': GitBranch,
+  'handshake': Handshake,
+  'file-check': FileCheck,
+  'database': Database,
 };
 const Component = map[name];
 ---

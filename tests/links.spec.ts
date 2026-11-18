@@ -30,7 +30,7 @@ for (const path of allPages) {
     const links = await page.locator('a[href]').evaluateAll((as) =>
       as.map((a) => ({ href: a.getAttribute('href')!, text: (a.textContent || a.getAttribute('aria-label') || '').trim() })),
     );
-    expect(links.length).toBeGreaterThan(path === '/' ? 2 : 5);
+    expect(links.length).toBeGreaterThan(5);
 
     const problems: string[] = [];
     for (const { href, text } of links) {

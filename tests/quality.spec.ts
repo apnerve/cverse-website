@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { allPages, landingPages, variants, expectedFont } from './pages';
+import { allPages, landingPages, expectedFont } from './pages';
 
 const REMOVED_SENTENCE = /CVerse\.ai is a premium AI\s*Native Services company/i;
 
@@ -55,27 +55,20 @@ for (const path of allPages) {
   });
 }
 
-for (const v of variants) {
-  test(`/${v}/ uses ${expectedFont[v]}`, async ({ page }) => {
-    await page.goto(`/${v}/`, { waitUntil: 'networkidle' });
-    await page.evaluate(() => document.fonts.ready);
-    const family = await page.locator('h1').evaluate((el) => getComputedStyle(el).fontFamily);
-    expect(family).toContain(expectedFont[v]);
-    const loaded = await page.evaluate((f) => document.fonts.check(`600 16px "${f}"`), expectedFont[v]);
-    expect(loaded, `${expectedFont[v]} should be loaded`).toBe(true);
-    if (v === 'corporate') {
-      // Body falls back to Inter until the Timeless Grotesk files are added to /public/fonts/timeless/.
-      const body = await page.evaluate(() => document.fonts.check('400 16px "Timeless Grotesk"'));
-      test.info().annotations.push({ type: 'note', description: `Timeless Grotesk (body) loaded: ${body}` });
-    }
-  });
-}
+test(`/ uses ${expectedFont}`, async ({ page }) => {
+  await page.goto('/', { waitUntil: 'networkidle' });
+  await page.evaluate(() => document.fonts.ready);
+  const family = await page.locator('h1').evaluate((el) => getComputedStyle(el).fontFamily);
+  expect(family).toContain(expectedFont);
+  const loaded = await page.evaluate((f) => document.fonts.check(`600 16px "${f}"`), expectedFont);
+  expect(loaded, `${expectedFont} should be loaded`).toBe(true);
+  // Body falls back to Inter until the Timeless Grotesk files are added to /public/fonts/timeless/.
+  const body = await page.evaluate(() => document.fonts.check('400 16px "Timeless Grotesk"'));
+  test.info().annotations.push({ type: 'note', description: `Timeless Grotesk (body) loaded: ${body}` });
+});
 
 for (const path of landingPages) {
-  // The exec version has its own nav labels and copy; the three design versions share one set.
-  const nav = path === '/exec/'
-    ? { servicesLink: 'Services', aboutLink: 'About', aboutTitle: 'About cverse' }
-    : { servicesLink: 'Services', aboutLink: 'About', aboutTitle: 'The strategic partner for enterprises' };
+  const nav = { servicesLink: 'Services', aboutLink: 'About', aboutTitle: 'About cverse' };
   test(`${path} navigation and mobile menu work`, async ({ page, isMobile }) => {
     await page.goto(path);
     if (isMobile) {
@@ -90,15 +83,41 @@ for (const path of landingPages) {
       await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: nav.aboutLink }).click();
     }
     await expect(page).toHaveURL(/#(services|about)$/);
-    // The hero and the about section are distinct targets (the original pointed "About" at the hero).
     await expect(page.locator('#about h2')).toHaveText(nav.aboutTitle);
   });
 }
 
-test('reduced motion disables hero animation on /motion/', async ({ browser }) => {
+test('floating call to action yields to the hero and contact buttons', async ({ page, isMobile }) => {
+  await page.goto('/', { waitUntil: 'networkidle' });
+  // Desktop: the header button. Mobile: a bar fixed to the bottom of the viewport.
+  const floating = page.locator(isMobile ? '#mobile-cta' : '#header-cta');
+  const other = page.locator(isMobile ? '#header-cta' : '#mobile-cta');
+  await expect(other).toBeHidden();
+  // At the top the hero button is on screen, so the floating one is faded out.
+  await expect(floating).toBeHidden();
+  await expect(floating).toHaveAttribute('data-hidden', '');
+  // Mid-page neither button is on screen: it fades in.
+  await page.locator('#how-we-work').scrollIntoViewIfNeeded();
+  await expect(floating).toBeVisible();
+  if (isMobile) {
+    // The open menu has its own button, so the bar steps aside until the menu closes.
+    await page.getByRole('button', { name: 'Open menu' }).click();
+    await expect(floating).toBeHidden();
+    await page.getByRole('button', { name: 'Close menu' }).click();
+    await expect(floating).toBeVisible();
+  }
+  // At the contact section its button is on screen: faded out again.
+  await page.locator('#contact [data-cta]').scrollIntoViewIfNeeded();
+  await expect(floating).toBeHidden();
+  // The faded button is not reachable by keyboard.
+  const focusable = await floating.locator('a').evaluate((el) => { (el as HTMLElement).focus(); return document.activeElement === el; });
+  expect(focusable).toBe(false);
+});
+
+test('reduced motion disables the hero animation', async ({ browser }) => {
   const ctx = await browser.newContext({ reducedMotion: 'reduce' });
   const page = await ctx.newPage();
-  await page.goto('/motion/');
+  await page.goto('/');
   const anim = await page.locator('.hero-blob-a').evaluate((el) => getComputedStyle(el).animationName);
   expect(anim).toBe('none');
   await ctx.close();

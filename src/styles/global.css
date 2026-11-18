@@ -227,7 +227,7 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* Motion version: hero background drift + CTA shimmer.                 */
+/* Hero background drift, entrance rise, CTA shimmer.                    */
 /* Everything here is gated behind prefers-reduced-motion.              */
 /* ------------------------------------------------------------------ */
 @keyframes drift-a {
@@ -276,12 +276,6 @@
   will-change: transform;
   pointer-events: none;
 }
-:is([data-variant="motion"], [data-variant="corporate"]) .hero-grid {
-  background-image:
-    linear-gradient(to right, var(--t-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--t-line) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
 .hero-grid {
   background-image:
     linear-gradient(to right, var(--t-line) 1px, transparent 1px),
@@ -292,19 +286,19 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  :is([data-variant="motion"], [data-variant="corporate"]) .hero-blob-a { animation: drift-a 22s ease-in-out infinite; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .hero-blob-b { animation: drift-b 26s ease-in-out infinite; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .hero-blob-c { animation: drift-c 30s ease-in-out infinite; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .hero-grid { animation: grid-pan 40s linear infinite; }
+  .hero-blob-a { animation: drift-a 22s ease-in-out infinite; }
+  .hero-blob-b { animation: drift-b 26s ease-in-out infinite; }
+  .hero-blob-c { animation: drift-c 30s ease-in-out infinite; }
+  .hero-grid { animation: grid-pan 40s linear infinite; }
 
-  :is([data-variant="motion"], [data-variant="corporate"]) .rise { animation: rise 700ms cubic-bezier(0.2, 0, 0, 1) both; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .rise-1 { animation-delay: 60ms; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .rise-2 { animation-delay: 160ms; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .rise-3 { animation-delay: 260ms; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .rise-4 { animation-delay: 360ms; }
+  .rise { animation: rise 700ms cubic-bezier(0.2, 0, 0, 1) both; }
+  .rise-1 { animation-delay: 60ms; }
+  .rise-2 { animation-delay: 160ms; }
+  .rise-3 { animation-delay: 260ms; }
+  .rise-4 { animation-delay: 360ms; }
 
-  :is([data-variant="motion"], [data-variant="corporate"]) .btn-primary { overflow: hidden; animation: breathe 4.5s ease-in-out infinite; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .btn-primary::after {
+  .btn-primary { overflow: hidden; animation: breathe 4.5s ease-in-out infinite; }
+  .btn-primary::after {
     content: "";
     position: absolute;
     inset: 0 auto 0 0;
@@ -313,8 +307,8 @@
     transform: translateX(-130%) skewX(-18deg);
     pointer-events: none;
   }
-  :is([data-variant="motion"], [data-variant="corporate"]) .btn-primary:hover::after { animation: shimmer 900ms ease forwards; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .btn-primary:hover { transform: translateY(-1px); animation-play-state: paused; }
-  :is([data-variant="motion"], [data-variant="corporate"]) .btn-secondary:hover { transform: translateY(-1px); }
-  :is([data-variant="motion"], [data-variant="corporate"]) .card:hover { transform: translateY(-2px); }
+  .btn-primary:hover::after { animation: shimmer 900ms ease forwards; }
+  .btn-primary:hover { transform: translateY(-1px); animation-play-state: paused; }
+  .btn-secondary:hover { transform: translateY(-1px); }
+  .card:hover { transform: translateY(-2px); }
 }

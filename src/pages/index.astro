@@ -1,66 +1,10 @@
 ---
-/**
- * Version chooser. Once a version is picked, replace this page with a redirect
- * (or move that version's files to src/pages/index.astro) and delete the others.
- */
-import '../styles/global.css';
-import '../styles/theme-corporate.css';
-import { site, variants } from '../data/site';
-import type { Variant } from '../data/site';
+import Shell from '../layouts/Shell.astro';
+import Landing from '../components/Landing.astro';
+import { execMeta } from '../data/exec';
 import { withBase } from '../lib/base';
-const order: Variant[] = ['corporate', 'dark', 'motion'];
-const swatches: Record<Variant, string[]> = {
-  corporate: ['#ffffff', '#1e4fc2', '#0b1324'],
-  dark: ['#0b1117', '#14b8a6', '#f2f6f8'],
-  motion: ['#fcfcfc', '#6355fe', '#ff8500'],
-};
-/** Fourth version: Corporate theme, new copy written for the buyer (CTO, VP, CEO). */
-const exec = {
-  slug: 'exec',
-  name: 'Exec',
-  blurb: 'Corporate theme with new copy for decision-makers: outcomes, engagement model, FAQ, and a scoping-call CTA.',
-  swatches: swatches.corporate,
-};
+const base = withBase('/');
 ---
-<!doctype html>
-<html lang="en" data-variant="corporate">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>cverse — versions</title>
-    <meta name="description" content="Design and copy versions of the cverse website." />
-    <meta name="robots" content="noindex" />
-    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
-  </head>
-  <body class="min-h-screen bg-surface-2">
-    <main id="main" class="container-page py-16 sm:py-24">
-      <p class="eyebrow">{site.name}</p>
-      <h1 class="section-title mt-4">Versions of the site</h1>
-      <p class="lead mt-4">Three visual directions on the same content, plus one with new copy. Pick one and it becomes the home page.</p>
-      <ul class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {order.map((v) => (
-          <li>
-            <a href={withBase(`/${v}/`)} class="card group flex h-full flex-col p-6 no-underline">
-              <div class="flex gap-1.5" aria-hidden="true">
-                {swatches[v].map((c) => <span class="h-6 w-6 rounded-full border border-line" style={`background:${c}`}></span>)}
-              </div>
-              <h2 class="mt-5 text-xl font-semibold text-ink-950">{variants[v].name}</h2>
-              <p class="mt-2 flex-1 text-sm leading-relaxed text-ink-600">{variants[v].blurb}</p>
-              <p class="mt-5 text-sm font-semibold text-ink-950 underline decoration-brand-500 decoration-2 underline-offset-4 group-hover:text-brand-700">View /{v}/ →</p>
-            </a>
-          </li>
-        ))}
-        <li>
-          <a href={withBase(`/${exec.slug}/`)} class="card group flex h-full flex-col p-6 no-underline">
-            <div class="flex gap-1.5" aria-hidden="true">
-              {exec.swatches.map((c) => <span class="h-6 w-6 rounded-full border border-line" style={`background:${c}`}></span>)}
-            </div>
-            <h2 class="mt-5 text-xl font-semibold text-ink-950">{exec.name}</h2>
-            <p class="mt-2 flex-1 text-sm leading-relaxed text-ink-600">{exec.blurb}</p>
-            <p class="mt-5 text-sm font-semibold text-ink-950 underline decoration-brand-500 decoration-2 underline-offset-4 group-hover:text-brand-700">View /{exec.slug}/ →</p>
-          </a>
-        </li>
-      </ul>
-    </main>
-  </body>
-</html>
+<Shell path="/" title={execMeta.title} description={execMeta.description}>
+  <Landing base={base} />
+</Shell>

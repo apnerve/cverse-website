@@ -1,28 +1,29 @@
 ---
 import { ArrowRight, Menu, X } from '@lucide/astro';
 import Logo from './Logo.astro';
-import { nav } from '../data/site';
-import type { Variant } from '../data/site';
+import { execNav, execCtaLabel } from '../data/exec';
 
-interface Props { base: string; variant?: Variant }
-const { base, variant } = Astro.props;
+interface Props { base: string }
+const { base } = Astro.props;
 ---
 <header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-transparent transition-[background-color,border-color,box-shadow] duration-200">
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <Logo base={base} variant={variant} />
+    <Logo base={base} />
 
-    <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
-      {nav.map((item) => (
+    <nav class="hidden items-center gap-7 md:flex" aria-label="Primary">
+      {execNav.map((item) => (
         <a href={`${base}${item.href}`} class="nav-link">{item.label}</a>
       ))}
     </nav>
 
-    <div class="hidden items-center md:flex">
+    {/* Shown only while no other call to action is in the viewport; see the script below. */}
+    <div id="header-cta" class="header-cta hidden items-center md:flex" data-hidden>
       <a href={`${base}#contact`} class="btn btn-primary">
-        Get in Touch
+        {execCtaLabel}
         <ArrowRight class="btn-icon h-4 w-4" aria-hidden="true" />
       </a>
     </div>
+    <noscript><style is:inline>#header-cta { opacity: 1; visibility: visible; }</style></noscript>
 
     <button
       id="menu-toggle"
@@ -39,16 +40,25 @@ const { base, variant } = Astro.props;
 
   <div id="mobile-menu" class="hidden border-t border-line bg-surface md:hidden">
     <nav class="container-page flex flex-col py-3" aria-label="Mobile">
-      {nav.map((item) => (
+      {execNav.map((item) => (
         <a href={`${base}${item.href}`} class="rounded-ui px-2 py-2.5 text-sm font-medium text-ink-700 hover:bg-surface-2">{item.label}</a>
       ))}
-      <a href={`${base}#contact`} class="btn btn-primary mt-2 w-full">
-        Get in Touch
+      <a href={`${base}#contact`} class="btn btn-primary mt-2 w-full" data-cta>
+        {execCtaLabel}
         <ArrowRight class="btn-icon h-4 w-4" aria-hidden="true" />
       </a>
     </nav>
   </div>
 </header>
+
+<style>
+  /* visibility, not display, so the nav does not shift and the button leaves the tab order once faded. */
+  .header-cta { transition: opacity 220ms ease, visibility 220ms; }
+  .header-cta[data-hidden] { opacity: 0; visibility: hidden; }
+  @media (prefers-reduced-motion: reduce) {
+    .header-cta { transition: none; }
+  }
+</style>
 
 <script>
   const header = document.getElementById('site-header');
@@ -78,4 +88,29 @@ const { base, variant } = Astro.props;
   toggle?.addEventListener('click', () => setOpen(menu?.classList.contains('hidden') ?? false));
   menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
   window.matchMedia('(min-width: 48rem)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+
+  // Header button (desktop) and bottom bar (mobile): visible only while none of the page's own
+  // call-to-action buttons ([data-cta] in the hero, the contact section, and the open mobile menu)
+  // is at least half on screen below the header.
+  const headerCta = document.getElementById('header-cta');
+  const mobileCta = document.getElementById('mobile-cta');
+  const pageCtas = document.querySelectorAll('[data-cta]');
+  if (headerCta && pageCtas.length && 'IntersectionObserver' in window) {
+    const onScreen = new Set<Element>();
+    const headerHeight = header?.offsetHeight ?? 64;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) onScreen.add(entry.target);
+          else onScreen.delete(entry.target);
+        }
+        headerCta.toggleAttribute('data-hidden', onScreen.size > 0);
+        mobileCta?.toggleAttribute('data-hidden', onScreen.size > 0);
+      },
+      { rootMargin: `-${headerHeight}px 0px 0px 0px`, threshold: 0.5 },
+    );
+    pageCtas.forEach((el) => observer.observe(el));
+  } else {
+    headerCta?.removeAttribute('data-hidden'); // legal pages, or no observer support: always show the header button
+  }
 </script>

@@ -1,5 +1,5 @@
 ---
-import '../styles/theme-corporate.css';
+import '../styles/theme.css';
 import Base from './Base.astro';
 import { withBase } from '../lib/base';
 
@@ -8,7 +8,7 @@ const fontDir = withBase('/fonts/timeless');
 interface Props { title?: string; description?: string; path: string }
 const props = Astro.props;
 ---
-<Base variant="corporate" {...props}>
+<Base {...props}>
   <Fragment slot="head">
     {/* Timeless Grotesk, Timeless Free Font License. Files live in /public/fonts/timeless/ (see README there).
         Until they are added the browser falls back to Inter. */}

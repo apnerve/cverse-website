@@ -10,4 +10,4 @@ Expected file names (rename if your zip differs, or update `src/styles/fonts-tim
 If the zip only contains `.ttf` files, they work too: change the `url()` and `format()` in
 `src/styles/fonts-timeless.css`. The license (Timeless Free Font License) permits web embedding
 and WOFF2 conversion; include a copy of the license text next to the files when you add them.
-Until the files are present the Corporate version falls back to Inter.
+Until the files are present the body text falls back to Inter.

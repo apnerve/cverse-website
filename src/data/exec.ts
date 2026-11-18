@@ -1,6 +1,6 @@
 /**
- * Copy for the Exec version (/exec/): the Corporate theme with content written for
- * the person who picks the vendor, a CTO, VP Engineering, or CEO comparing AI services firms.
+ * All page copy. Written for the person who picks the vendor: a CTO, VP Engineering,
+ * or CEO comparing AI services firms. (Started life as the "exec" version, hence the export names.)
  *
  * Voice: plain and declarative. No slogans, no adjectives about ourselves. Where a claim
  * cannot be evidenced on the page it is written as a commitment the buyer can check against

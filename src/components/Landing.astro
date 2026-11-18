@@ -2,19 +2,28 @@
 import Header from './Header.astro';
 import Hero from './Hero.astro';
 import Services from './Services.astro';
-import Why from './Why.astro';
+import Stack from './Stack.astro';
+import How from './How.astro';
+import Deliverables from './Deliverables.astro';
+import Faq from './Faq.astro';
 import About from './About.astro';
+import Contact from './Contact.astro';
 import Footer from './Footer.astro';
-import type { Variant } from '../data/site';
+import MobileCta from './MobileCta.astro';
 
-interface Props { variant: Variant; base: string }
-const { variant, base } = Astro.props;
+interface Props { base: string }
+const { base } = Astro.props;
 ---
-<Header base={base} variant={variant} />
+<Header base={base} />
 <main id="main">
-  <Hero variant={variant} />
+  <Hero />
   <Services />
-  <Why />
+  <Stack />
+  <How />
+  <Deliverables />
+  <Faq />
   <About />
+  <Contact />
 </main>
-<Footer base={base} variant={variant} />
+<Footer base={base} />
+<MobileCta base={base} />

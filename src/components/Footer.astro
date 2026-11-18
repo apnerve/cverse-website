@@ -1,24 +1,22 @@
 ---
 import { Mail, MapPin } from '@lucide/astro';
 import Logo from './Logo.astro';
-import { site, footer } from '../data/site';
+import { site } from '../data/site';
+import { execFooter as footer } from '../data/exec';
 
-import type { Variant } from '../data/site';
-
-interface Props { base: string; variant?: Variant }
-const { base, variant } = Astro.props;
+interface Props { base: string }
+const { base } = Astro.props;
 const year = new Date().getFullYear();
 const socials = [
   site.social.linkedin && { label: 'LinkedIn', href: site.social.linkedin, kind: 'linkedin' as const },
   site.social.x && { label: 'X (Twitter)', href: site.social.x, kind: 'x' as const },
 ].filter(Boolean) as { label: string; href: string; kind: 'linkedin' | 'x' }[];
 ---
-<footer id="contact" class="bg-footer-bg text-footer-fg" aria-labelledby="contact-title">
+<footer class="bg-footer-bg text-footer-fg" aria-label="Site footer">
   <div class="container-page py-16 sm:py-20">
-    <h2 id="contact-title" class="sr-only">Contact</h2>
     <div class="grid gap-12 md:grid-cols-12">
       <div class="md:col-span-5">
-        <Logo base={base} size="lg" inverted variant={variant} />
+        <Logo base={base} size="lg" inverted />
         <p class="mt-5 max-w-md text-sm leading-relaxed text-footer-muted">{footer.blurb}</p>
         <ul class="mt-6 flex gap-3" aria-label="Social and contact links">
           {socials.map((s) => (
@@ -43,7 +41,7 @@ const socials = [
       </div>
 
       <div class="md:col-span-3">
-        <h3 class="text-sm font-bold">{footer.servicesHeading}</h3>
+        <h2 class="text-sm font-bold">{footer.servicesHeading}</h2>
         <ul class="mt-5 space-y-3">
           {footer.serviceLinks.map((label) => (
             <li><a href={`${base}#services`} class="text-sm text-footer-muted transition-colors hover:text-footer-fg">{label}</a></li>
@@ -52,7 +50,7 @@ const socials = [
       </div>
 
       <div class="md:col-span-4">
-        <h3 class="text-sm font-bold">{footer.contactHeading}</h3>
+        <h2 class="text-sm font-bold">{footer.contactHeading}</h2>
         <ul class="mt-5 space-y-3 text-sm text-footer-muted">
           <li class="flex items-center gap-2.5">
             <Mail class="h-4 w-4 flex-none" aria-hidden="true" />
@@ -65,7 +63,6 @@ const socials = [
             </address>
           </li>
         </ul>
-        <p class="mt-6 text-xs leading-relaxed text-footer-muted">{footer.reach}</p>
       </div>
     </div>
 
