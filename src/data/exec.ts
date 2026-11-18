@@ -247,7 +247,7 @@ export const execAboutPoints = [
   {
     title: 'How we build',
     description:
-      'We run an internal software factory: coding agents, model routing, automated evaluation, and review gates that take a written specification to tested, deployable software. It is an internal tool, not a product. We use it on client work, and the client receives the output in their own repository like any other code.', // CONFIRM wording
+      'We build client work with an internal software factory of our own. You receive the output as ordinary code in your own repository. Ask about it on the scoping call.',
   },
   {
     title: 'References',
