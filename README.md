@@ -9,6 +9,7 @@ Engineering, CEO): plain statements, checkable commitments, no claims the page c
 | `/`         | Landing page: services, stack, how we work, deliverables, FAQ, about, contact |
 | `/privacy/` | Privacy policy (short, plain language). No terms page: there are no accounts, forms, or analytics, and engagements are governed by signed contracts. |
 | `/exec/`    | Redirects to `/` (the page was previewed there before it became the only version). |
+| `/brand/`   | Wordmark one-pager: the three versions of the logo side by side, for review (noindex, not linked). |
 
 ## Commands
 

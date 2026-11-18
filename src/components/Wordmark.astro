@@ -5,9 +5,10 @@
  */
 import raw from '../assets/wordmark.svg?raw';
 
-interface Props { height?: number; class?: string }
-const { height = 18, class: className = '' } = Astro.props;
-const svg = raw
+/** `svg` overrides the mark with another raw SVG of the same 176-unit height (used by /brand/). */
+interface Props { height?: number; class?: string; svg?: string }
+const { height = 18, class: className = '', svg: source = raw } = Astro.props;
+const svg = source
   .trim()
   .replace(/ width="\d+" height="176"/, ` height="${height}"`)
   .replace('<svg ', `<svg class="wordmark ${className}" `);

@@ -50,7 +50,8 @@
     "copilots",
     "Copilots",
     "runbooks",
-    "Runbooks"
+    "Runbooks",
+    "fontsource"
   ],
   "ignorePaths": [
     "node_modules",

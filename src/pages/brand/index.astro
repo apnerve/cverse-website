@@ -1,0 +1,82 @@
+---
+/**
+ * Brand one-pager: three versions of the wordmark for comparison. Not linked from the site, noindex.
+ */
+import '@fontsource-variable/jetbrains-mono';
+import Shell from '../../layouts/Shell.astro';
+import Wordmark from '../../components/Wordmark.astro';
+import v1 from '../../assets/brand/v1-cursor.svg?raw';
+import v2 from '../../assets/wordmark.svg?raw';
+import v3 from '../../assets/brand/v3-ai.svg?raw';
+import { withBase } from '../../lib/base';
+
+const versions = [
+  {
+    n: '01',
+    name: 'Cursor',
+    svg: v1,
+    note: 'The existing mark. Blue "c", the word in the text colour, and a blinking underscore cursor at the slant of the letters.',
+  },
+  {
+    n: '02',
+    name: 'Prompt',
+    svg: v2,
+    note: 'A chevron before the cursor, so the mark ends in the terminal prompt ">_". Same weight and slant as the cursor. The chevron stays still; only the cursor blinks.',
+  },
+  {
+    n: '03',
+    name: 'Domain',
+    svg: v3,
+    note: '".ai" added after the word in JetBrains Mono, so the mark reads as the domain. The suffix is set in the text colour at 72% and slanted with the letters. The cursor keeps blinking at the end.',
+  },
+];
+---
+<Shell path="/brand/" title="cverse | Wordmark versions" description="Three versions of the cverse wordmark, side by side, for review.">
+  <Fragment slot="head"><meta name="robots" content="noindex" /></Fragment>
+  <main id="main" class="bg-surface">
+    <div class="container-page py-16 sm:py-20">
+      <p class="eyebrow">Brand</p>
+      <h1 class="section-title mt-4">Wordmark, three versions</h1>
+      <p class="lead mt-4 max-w-2xl">Each version at display size, inverted on the footer colour, and at the 18px header size. Blue is #3B82F6; the rest takes the surrounding text colour.</p>
+
+      <ol class="mt-12 space-y-10">
+        {versions.map((v) => (
+          <li class="card overflow-hidden">
+            <div class="border-b border-line px-6 py-5 sm:px-10">
+              <div class="flex items-baseline gap-3">
+                <span class="font-mono text-sm text-ink-500">{v.n}</span>
+                <h2 class="text-lg font-semibold text-ink-950">{v.name}</h2>
+              </div>
+              <p class="mt-1.5 max-w-3xl text-sm text-ink-600">{v.note}</p>
+            </div>
+            <div class="mark-lg flex items-center px-6 py-10 text-ink-950 sm:px-10 sm:py-14">
+              <Wordmark svg={v.svg} height={80} />
+            </div>
+            <div class="mark-lg flex items-center bg-footer-bg px-6 py-10 text-footer-fg sm:px-10 sm:py-14">
+              <Wordmark svg={v.svg} height={80} />
+            </div>
+            <div class="grid sm:grid-cols-2">
+              <div class="flex items-center gap-3 border-t border-line px-6 py-5 text-ink-950 sm:px-10">
+                <Wordmark svg={v.svg} height={18} />
+                <span class="text-xs text-ink-500">header, 18px</span>
+              </div>
+              <div class="flex items-center gap-3 bg-footer-bg px-6 py-5 text-footer-fg sm:px-10">
+                <Wordmark svg={v.svg} height={22} />
+                <span class="text-xs opacity-60">footer, 22px</span>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <p class="mt-10 text-sm text-ink-600">
+        <a href={withBase('/')} class="font-medium text-ink-900 underline decoration-brand-500 decoration-2 underline-offset-4">Back to the site</a>
+      </p>
+    </div>
+  </main>
+</Shell>
+
+<style>
+  /* Display rows scale with the viewport so the widest mark fits a phone screen. */
+  .mark-lg :global(svg) { height: clamp(40px, 7vw, 80px); }
+</style>

@@ -28,4 +28,4 @@ test-results/
 playwright-report/
 
 # brand working files (kept local)
-brand/
+/brand/
