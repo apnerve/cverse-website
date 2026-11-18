@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const inter = path.join(root, 'node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2');
-const wordmark = readFileSync(path.join(root, 'src/assets/wordmark.svg'), 'utf8').replace(' width="978" height="176"', ' height="96"');
+const wordmark = readFileSync(path.join(root, 'src/assets/wordmark.svg'), 'utf8').replace(/ width="\d+" height="176"/, ' height="96"');
 const html = `<!doctype html><html><head><style>
 @font-face{font-family:Allo;src:url(file://${path.join(root, 'node_modules/allo-font/fonts/webfonts/AlloVariableFriendly.woff2')}) format('woff2');font-weight:100 900}
 html,body{margin:0;width:1200px;height:630px;background:#09090B;font-family:Allo,sans-serif;color:#F8FAFC}

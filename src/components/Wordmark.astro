@@ -1,7 +1,7 @@
 ---
 /**
- * The outlined "cverse_" wordmark (src/assets/wordmark.svg), inlined so "verse"
- * takes the surrounding text colour and the cursor can blink via CSS.
+ * The "cverse >_" wordmark (src/assets/wordmark.svg), inlined so "verse" takes the
+ * surrounding text colour and the cursor can blink via CSS. The chevron stays still.
  */
 import raw from '../assets/wordmark.svg?raw';
 
@@ -9,7 +9,7 @@ interface Props { height?: number; class?: string }
 const { height = 18, class: className = '' } = Astro.props;
 const svg = raw
   .trim()
-  .replace(' width="978" height="176"', ` height="${height}"`)
+  .replace(/ width="\d+" height="176"/, ` height="${height}"`)
   .replace('<svg ', `<svg class="wordmark ${className}" `);
 ---
 <Fragment set:html={svg} />
