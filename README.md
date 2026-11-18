@@ -49,8 +49,8 @@ is included). For the production domain, build without those env vars (defaults:
 ## Before go-live
 
 1. **Confirm the facts.** Review every `CONFIRM` line in `src/data/exec.ts`: fixed pricing, discovery length,
-   release cadence, support period, SOC 2 status, reply time, references, the software factory wording,
-   and the optional time-zone FAQ. Fill or delete the `SLOT` comments.
+   release cadence, support period, SOC 2 status, reply time, references,
+   and the software factory wording. Fill or delete the `SLOT` comments.
 2. **Social links.** Set `site.social.linkedin` and `site.social.x` in `src/data/site.ts`. Icons are hidden
    while a URL is empty, so no dead links ship.
 3. **Timeless Grotesk.** Download from https://www.timeless.co/type and follow

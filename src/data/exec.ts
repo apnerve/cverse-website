@@ -233,11 +233,6 @@ export const execFaq: { q: string; a: string }[] = [
     q: 'Do you work with our existing team?',
     a: 'Yes. Your engineers have repository access from the first release, and we plan the handover from the start.',
   },
-  {
-    // Optional: practical, not positioning. Delete if not wanted.
-    q: 'Where is the team?',
-    a: 'Dubai, UTC+4, which overlaps the working day in Europe, the Gulf, and India. US mornings by arrangement.', // CONFIRM
-  },
 ];
 
 export const execAboutSection = {
