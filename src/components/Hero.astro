@@ -14,13 +14,12 @@ import { execHero as hero } from '../data/exec';
 
   <div class="container-page relative pb-20 pt-36 sm:pb-28 sm:pt-44 lg:pb-32 lg:pt-48">
     <div class="max-w-3xl">
-      <p class="eyebrow rise rise-1">{hero.eyebrow}</p>
-      <h1 class="rise rise-2 mt-5 text-4xl leading-[1.08] text-ink-950 sm:text-5xl lg:text-[3.5rem]" style="font-weight: var(--t-heading-weight)">
+      <h1 class="rise rise-1 text-4xl leading-[1.08] text-ink-950 sm:text-5xl lg:text-[3.5rem]" style="font-weight: var(--t-heading-weight)">
         {hero.titleLine1}<br />
         <span class="text-heading-accent">{hero.titleLine2}</span>
       </h1>
-      <p class="lead rise rise-3 mt-6 max-w-2xl">{hero.lead}</p>
-      <div class="rise rise-4 mt-8 flex flex-wrap items-center gap-3">
+      <p class="lead rise rise-2 mt-6 max-w-2xl">{hero.lead}</p>
+      <div class="rise rise-3 mt-8 flex flex-wrap items-center gap-3">
         <CtaButton href={hero.primaryCta.href} label={hero.primaryCta.label} cta />
         <CtaButton href={hero.secondaryCta.href} label={hero.secondaryCta.label} variant="secondary" />
       </div>

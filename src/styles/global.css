@@ -102,23 +102,6 @@
 }
 
 @layer components {
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--t-eyebrow, var(--t-brand-700));
-  }
-  .eyebrow::before {
-    content: "";
-    width: 0.375rem;
-    height: 0.375rem;
-    border-radius: 9999px;
-    background: var(--t-brand-600);
-  }
   .section-title {
     font-size: clamp(1.875rem, 1.4rem + 1.6vw, 2.5rem);
     line-height: 1.12;
@@ -312,3 +295,6 @@
   .btn-secondary:hover { transform: translateY(-1px); }
   .card:hover { transform: translateY(-2px); }
 }
+
+/* The wordmark's Petrol parts switch to the lighter tint on the dark footer colour. */
+.bg-footer-bg { --t-mark: var(--petrol-light); }

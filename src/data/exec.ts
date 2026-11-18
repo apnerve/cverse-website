@@ -28,7 +28,6 @@ export const execNav = [
 export const execCtaLabel = 'Book a scoping call';
 
 export const execHero = {
-  eyebrow: 'AI engineering for enterprises',
   titleLine1: 'AI systems that',
   titleLine2: 'run in production.',
   lead:
@@ -59,7 +58,6 @@ export type ExecIcon =
   | 'database';
 
 export const execServicesSection = {
-  eyebrow: 'Services',
   title: 'What we build',
   intro:
     'Each engagement is scoped to one business outcome and built in your environment. These are the four kinds of work we take on.',
@@ -101,7 +99,6 @@ export const execServices: { icon: ExecIcon; title: string; description: string;
 ];
 
 export const execStackSection = {
-  eyebrow: 'Stack',
   title: 'Tools we have used on recent work',
   intro:
     'We choose tools per engagement and run them in your environment. If your platform team has standardized on Bedrock, Azure OpenAI, or Vertex AI, we build inside that.',
@@ -116,7 +113,6 @@ export const execStack: { group: string; items: string[] }[] = [
 ];
 
 export const execHowSection = {
-  eyebrow: 'How we work',
   title: 'How an engagement runs',
   intro:
     'Four stages. You get a fixed scope and price at the end of discovery, before any build work starts.', // CONFIRM
@@ -154,7 +150,6 @@ export const execSteps: { icon: ExecIcon; step: string; title: string; descripti
 ];
 
 export const execDeliverablesSection = {
-  eyebrow: 'What you receive',
   title: 'What you receive at handover',
   intro:
     'Every build includes the following. They are listed here so you can check them against the proposal.',
@@ -199,7 +194,6 @@ export const execDeliverables: { icon: ExecIcon; title: string; description: str
 ];
 
 export const execFaqSection = {
-  eyebrow: 'FAQ',
   title: 'Questions buyers usually ask',
   intro: 'Short answers. The scoping call covers anything not here.',
 };
@@ -236,7 +230,6 @@ export const execFaq: { q: string; a: string }[] = [
 ];
 
 export const execAboutSection = {
-  eyebrow: 'About',
   title: 'About cverse',
   intro:
     'cverse (CVerse Ventures FZCO) is an AI engineering firm. We build and operate LLM, agent, and forecasting systems for enterprises, inside the client’s own infrastructure.',
@@ -258,7 +251,6 @@ export const execAboutPoints = [
 // SLOT: client outcomes. When publishable, add a short list (industry, problem, result) between FAQ and About.
 
 export const execContact = {
-  eyebrow: 'Contact',
   title: 'Tell us what you are trying to do.',
   body:
     'Two or three lines is enough. We reply within two working days with whether we can help and what a scoping call would cover.', // CONFIRM reply time

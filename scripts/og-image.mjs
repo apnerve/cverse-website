@@ -15,14 +15,13 @@ html,body{margin:0;width:1200px;height:630px;background:#09090B;font-family:Allo
  linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px) 0 0/56px 56px}
 .logo svg{display:block}
 h1{margin:108px 0 0;font-size:66px;line-height:1.05;letter-spacing:-.03em;font-weight:640;max-width:900px}
-h1 em{font-style:normal;color:#3B82F6}
+h1 em{font-style:normal;color:#3AAFBD}
+.logo{--t-mark:#3AAFBD}
 p{margin:26px 0 0;font-size:27px;color:#A1A1AA;max-width:860px;line-height:1.4;font-weight:420}
-.eyebrow{position:absolute;bottom:72px;left:80px;font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;font-weight:500;font-family:ui-monospace,Menlo,monospace}
 </style></head><body><div class="wrap">
 <div class="logo">${wordmark}</div>
 <h1>AI systems that <em>run in production.</em></h1>
 <p>LLM, agent, and forecasting systems for enterprises, built and run in your own cloud.</p>
-<div class="eyebrow">AI engineering for enterprises</div>
 </div></body></html>`;
 
 import { existsSync } from 'node:fs';

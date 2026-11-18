@@ -1,4 +1,4 @@
-/* Theme. Brand palette (Obsidian, Snow, Zinc, Slate, Route Blue, Signal Teal).
+/* Theme. Brand palette (Obsidian, Snow, Zinc, Slate, Petrol, Signal Teal).
    Headlines in Space Grotesk, body in Timeless Grotesk with Inter as fallback. */
 @import "@fontsource-variable/space-grotesk";
 @import "@fontsource-variable/inter";
@@ -14,7 +14,8 @@
   --snow: #F8FAFC;
   --zinc: #A1A1AA;
   --slate: #52525B;
-  --route-blue: #3B82F6;
+  --petrol: #0F6E7A;
+  --petrol-light: #3AAFBD; /* the mark on dark surfaces; Petrol itself is 3.4:1 on Obsidian */
   --signal-teal: #2DD4BF;
 
   --t-surface: var(--snow);
@@ -31,36 +32,36 @@
   --t-ink-400: var(--zinc);
   --t-ink-300: color-mix(in srgb, var(--obsidian) 24%, var(--snow));
 
-  /* One blue; lighter steps are tints of it on Snow */
-  --t-brand-50: color-mix(in srgb, var(--route-blue) 8%, var(--snow));
-  --t-brand-100: color-mix(in srgb, var(--route-blue) 14%, var(--snow));
-  --t-brand-200: color-mix(in srgb, var(--route-blue) 28%, var(--snow));
-  --t-brand-300: color-mix(in srgb, var(--route-blue) 50%, var(--snow));
-  --t-brand-400: color-mix(in srgb, var(--route-blue) 75%, var(--snow));
-  --t-brand-500: var(--route-blue);
-  --t-brand-600: var(--route-blue);
-  --t-brand-700: var(--route-blue);
-  --t-brand-800: var(--route-blue);
-  --t-brand-900: var(--route-blue);
+  /* One brand colour; lighter steps are tints of it on Snow */
+  --t-brand-50: color-mix(in srgb, var(--petrol) 8%, var(--snow));
+  --t-brand-100: color-mix(in srgb, var(--petrol) 14%, var(--snow));
+  --t-brand-200: color-mix(in srgb, var(--petrol) 28%, var(--snow));
+  --t-brand-300: color-mix(in srgb, var(--petrol) 50%, var(--snow));
+  --t-brand-400: color-mix(in srgb, var(--petrol) 75%, var(--snow));
+  --t-brand-500: var(--petrol);
+  --t-brand-600: var(--petrol);
+  --t-brand-700: var(--petrol);
+  --t-brand-800: var(--petrol);
+  --t-brand-900: var(--petrol);
   --t-on-brand: var(--snow);
-  --t-heading-accent: var(--route-blue);
+  --t-heading-accent: var(--petrol);
   --t-highlight: var(--signal-teal);
+  --t-mark: var(--petrol); /* fill of the c, chevron and cursor in the inline wordmark */
 
-  /* Small text never sits in Route Blue on Snow (3.7:1); these fall back to ink */
-  --t-eyebrow: var(--slate);
-  --t-icon-fg: var(--route-blue);
+  /* Petrol is 5.7:1 on Snow, so it could carry small text; links stay ink by choice */
+  --t-icon-fg: var(--petrol);
   --t-link: var(--obsidian);
-  --t-link-underline: var(--route-blue);
-  --t-link-hover: var(--route-blue);
+  --t-link-underline: var(--petrol);
+  --t-link-hover: var(--petrol);
 
-  /* Primary action is Obsidian; blue is reserved for the c, the cursor and accents */
+  /* Primary action is Obsidian; Petrol is reserved for the c, the chevron, the cursor and accents */
   --t-btn-bg: var(--obsidian);
   --t-btn-fg: var(--snow);
   --t-btn-hover: color-mix(in srgb, var(--obsidian) 84%, var(--snow));
 
   --t-code-bg: var(--obsidian);
   --t-code-fg: var(--snow);
-  --t-code-key: var(--route-blue);
+  --t-code-key: var(--petrol);
   --t-code-dim: var(--zinc);
 
   --t-footer-bg: var(--obsidian);
