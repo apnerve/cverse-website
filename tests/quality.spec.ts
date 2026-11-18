@@ -72,6 +72,10 @@ for (const v of variants) {
 }
 
 for (const path of landingPages) {
+  // The exec version has its own nav labels and copy; the three design versions share one set.
+  const nav = path === '/exec/'
+    ? { servicesLink: 'Services', aboutLink: 'About', aboutTitle: 'About cverse' }
+    : { servicesLink: 'Services', aboutLink: 'About', aboutTitle: 'The strategic partner for enterprises' };
   test(`${path} navigation and mobile menu work`, async ({ page, isMobile }) => {
     await page.goto(path);
     if (isMobile) {
@@ -80,14 +84,14 @@ for (const path of landingPages) {
       await expect(page.getByRole('button', { name: 'Close menu' })).toBeVisible();
       const menu = page.locator('#mobile-menu');
       await expect(menu).toBeVisible();
-      await menu.getByRole('link', { name: 'Services' }).click();
+      await menu.getByRole('link', { name: nav.servicesLink }).click();
       await expect(menu).toBeHidden();
     } else {
-      await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'About' }).click();
+      await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: nav.aboutLink }).click();
     }
     await expect(page).toHaveURL(/#(services|about)$/);
     // The hero and the about section are distinct targets (the original pointed "About" at the hero).
-    await expect(page.locator('#about h2')).toHaveText('The strategic partner for enterprises');
+    await expect(page.locator('#about h2')).toHaveText(nav.aboutTitle);
   });
 }
 

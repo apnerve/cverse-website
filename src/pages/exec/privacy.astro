@@ -1,0 +1,13 @@
+---
+import Shell from '../../layouts/CorporateShell.astro';
+import LegalPage from '../../components/exec/LegalPage.astro';
+import PrivacyContent from '../../components/exec/PrivacyContent.astro';
+import { site } from '../../data/site';
+import { withBase } from '../../lib/base';
+const base = withBase('/exec/');
+---
+<Shell path="/exec/privacy/" title={`Privacy Policy — ${site.name}`} description={`How ${site.legalName} handles personal data on ${site.name}.`}>
+  <LegalPage base={base} title="Privacy Policy" updated="18 November 2026">
+    <PrivacyContent />
+  </LegalPage>
+</Shell>

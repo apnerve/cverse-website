@@ -1,0 +1,28 @@
+---
+import { ArrowRight, Mail } from '@lucide/astro';
+import { execContact as c } from '../../data/exec';
+import { site } from '../../data/site';
+---
+<section id="contact" class="border-b border-line bg-surface-2" aria-labelledby="contact-title">
+  <div class="container-page py-20 sm:py-24">
+    <div class="card p-8 sm:p-12 lg:p-16">
+      <div class="grid items-center gap-10 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <p class="eyebrow">{c.eyebrow}</p>
+          <h2 id="contact-title" class="section-title mt-4">{c.title}</h2>
+          <p class="lead mt-5">{c.body}</p>
+        </div>
+        <div class="lg:col-span-5 lg:justify-self-end">
+          <a href={`mailto:${site.email}`} class="btn btn-primary w-full sm:w-auto">
+            {c.cta}
+            <ArrowRight class="btn-icon h-4 w-4" aria-hidden="true" />
+          </a>
+          <p class="mt-4 flex items-center gap-2 text-sm text-ink-600">
+            <Mail class="h-4 w-4 flex-none" aria-hidden="true" />
+            <a href={`mailto:${site.email}`} class="font-medium text-ink-900 underline decoration-brand-500 decoration-2 underline-offset-4">{site.email}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

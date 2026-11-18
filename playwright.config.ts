@@ -9,7 +9,7 @@ const cached = [
 ].find((p) => existsSync(p));
 const launchOptions = cached ? { executablePath: cached } : {};
 
-const PORT = 4321;
+const PORT = Number(process.env.PORT ?? 4321); // set PORT when a dev server already holds 4321
 
 export default defineConfig({
   testDir: './tests',

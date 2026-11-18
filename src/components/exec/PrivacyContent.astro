@@ -1,0 +1,61 @@
+---
+import { site } from '../../data/site';
+const host = site.url.replace('https://', '');
+---
+<p>
+  This is the privacy policy for <a href={site.url}>{host}</a>, run by {site.legalName}. It is short because
+  the site does very little with your data.
+</p>
+
+<h2>What we collect</h2>
+<p>The site has no accounts, forms, cookies, or analytics. Fonts and scripts are served from our own domain.</p>
+<ul>
+  <li>
+    <strong>If you visit.</strong> Our hosting provider keeps standard server logs: IP address, browser, pages
+    requested, and the time. We use them only to keep the site running and secure.
+  </li>
+  <li>
+    <strong>If you email us.</strong> We receive your email address and whatever you write. We use it to reply,
+    and if we go on to work together, to run that engagement.
+  </li>
+</ul>
+<p>That is all. We do not buy, sell, or combine data about you from anywhere else.</p>
+
+<h2>Who else sees it</h2>
+<p>
+  The companies that host the site and our email, to the extent they need to in order to provide those
+  services. Nobody else, unless the law requires it. Those providers may store data outside the UAE; where they
+  do, we rely on their contractual safeguards.
+</p>
+
+<h2>How long we keep it</h2>
+<p>
+  Server logs are kept for a short period and then deleted. Email is kept for as long as we are in contact and
+  for the period our accounting and legal obligations require.
+</p>
+
+<h2>Your rights</h2>
+<p>
+  You can ask what we hold about you, ask us to correct or delete it, or object to our using it.
+  Email <a href={`mailto:${site.email}`}>{site.email}</a> and we will respond. We are a UAE company and work under
+  UAE Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data. You can complain to the UAE Data
+  Office if you think we have got something wrong.
+</p>
+
+<h2>Two other things</h2>
+<ul>
+  <li>Information on this site is general. It is not advice for your situation, and we may change it without notice.</li>
+  <li>Our consulting and engineering work is governed by the contract we sign with each client, not by this page.</li>
+</ul>
+
+<h2>Changes</h2>
+<p>
+  If we add analytics, a contact form, or anything else that changes what we collect, we will update this page
+  and the date at the top before it goes live.
+</p>
+
+<h2>Contact</h2>
+<p>
+  {site.legalName}, {site.address.lines[0]}, {site.address.lines[1]}.
+  Email <a href={`mailto:${site.email}`}>{site.email}</a>.
+</p>

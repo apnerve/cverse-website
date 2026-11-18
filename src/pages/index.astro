@@ -14,23 +14,30 @@ const swatches: Record<Variant, string[]> = {
   dark: ['#0b1117', '#14b8a6', '#f2f6f8'],
   motion: ['#fcfcfc', '#6355fe', '#ff8500'],
 };
+/** Fourth version: Corporate theme, new copy written for the buyer (CTO, VP, CEO). */
+const exec = {
+  slug: 'exec',
+  name: 'Exec',
+  blurb: 'Corporate theme with new copy for decision-makers: outcomes, engagement model, FAQ, and a scoping-call CTA.',
+  swatches: swatches.corporate,
+};
 ---
 <!doctype html>
 <html lang="en" data-variant="corporate">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>cverse — design versions</title>
-    <meta name="description" content="Three design versions of the cverse website." />
+    <title>cverse — versions</title>
+    <meta name="description" content="Design and copy versions of the cverse website." />
     <meta name="robots" content="noindex" />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
   </head>
   <body class="min-h-screen bg-surface-2">
     <main id="main" class="container-page py-16 sm:py-24">
       <p class="eyebrow">{site.name}</p>
-      <h1 class="section-title mt-4">Three versions of the site</h1>
-      <p class="lead mt-4">Same content, three visual directions. Pick one and it becomes the home page.</p>
-      <ul class="mt-12 grid gap-6 md:grid-cols-3">
+      <h1 class="section-title mt-4">Versions of the site</h1>
+      <p class="lead mt-4">Three visual directions on the same content, plus one with new copy. Pick one and it becomes the home page.</p>
+      <ul class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {order.map((v) => (
           <li>
             <a href={withBase(`/${v}/`)} class="card group flex h-full flex-col p-6 no-underline">
@@ -43,6 +50,16 @@ const swatches: Record<Variant, string[]> = {
             </a>
           </li>
         ))}
+        <li>
+          <a href={withBase(`/${exec.slug}/`)} class="card group flex h-full flex-col p-6 no-underline">
+            <div class="flex gap-1.5" aria-hidden="true">
+              {exec.swatches.map((c) => <span class="h-6 w-6 rounded-full border border-line" style={`background:${c}`}></span>)}
+            </div>
+            <h2 class="mt-5 text-xl font-semibold text-ink-950">{exec.name}</h2>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-ink-600">{exec.blurb}</p>
+            <p class="mt-5 text-sm font-semibold text-ink-950 underline decoration-brand-500 decoration-2 underline-offset-4 group-hover:text-brand-700">View /{exec.slug}/ →</p>
+          </a>
+        </li>
       </ul>
     </main>
   </body>

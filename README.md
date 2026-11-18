@@ -8,8 +8,9 @@ versions share one content file and one set of components.
 | `/corporate/` | Corporate | Timeless Grotesk      | Blue / white. Font files supplied by client. |
 | `/dark/`      | Dark      | Space Grotesk         | Dark mode, teal accent.                      |
 | `/motion/`    | Motion    | Allo                  | Allo site palette, animated hero and CTAs.   |
+| `/exec/`      | Exec      | as Corporate          | Corporate theme, own copy in `src/data/exec.ts` written for CTO/VP/CEO buyers. |
 
-`/` is a temporary chooser page (noindex). Each version also has `privacy/` and `terms/` pages.
+`/` is a temporary chooser page (noindex). Each version also has `privacy/` and `terms/` pages, except `/exec/`, which has a short plain-language `privacy/` page and no terms page (no accounts, forms or analytics; engagements are governed by signed contracts).
 
 ## Commands
 
