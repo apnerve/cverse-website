@@ -1,5 +1,6 @@
 ---
-import { ArrowRight, Menu, X } from '@lucide/astro';
+import { Menu, X } from '@lucide/astro';
+import CtaButton from './CtaButton.astro';
 import Logo from './Logo.astro';
 import { execNav, execCtaLabel } from '../data/exec';
 
@@ -18,10 +19,7 @@ const { base } = Astro.props;
 
     {/* Shown only while no other call to action is in the viewport; see the script below. */}
     <div id="header-cta" class="header-cta hidden items-center md:flex" data-hidden>
-      <a href={`${base}#contact`} class="btn btn-primary">
-        {execCtaLabel}
-        <ArrowRight class="btn-icon h-4 w-4" aria-hidden="true" />
-      </a>
+      <CtaButton href={`${base}#contact`} label={execCtaLabel} />
     </div>
     <noscript><style is:inline>#header-cta { opacity: 1; visibility: visible; }</style></noscript>
 
@@ -43,10 +41,7 @@ const { base } = Astro.props;
       {execNav.map((item) => (
         <a href={`${base}${item.href}`} class="rounded-ui px-2 py-2.5 text-sm font-medium text-ink-700 hover:bg-surface-2">{item.label}</a>
       ))}
-      <a href={`${base}#contact`} class="btn btn-primary mt-2 w-full" data-cta>
-        {execCtaLabel}
-        <ArrowRight class="btn-icon h-4 w-4" aria-hidden="true" />
-      </a>
+      <CtaButton href={`${base}#contact`} label={execCtaLabel} class="mt-2 w-full" cta />
     </nav>
   </div>
 </header>

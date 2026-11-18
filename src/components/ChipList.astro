@@ -1,0 +1,8 @@
+---
+/** Inline list of chips (tags, tool names). */
+interface Props { items: string[]; label?: string; class?: string }
+const { items, label, class: className = '' } = Astro.props;
+---
+<ul class={`flex flex-wrap items-center gap-2 ${className}`.trim()} aria-label={label}>
+  {items.map((t) => <li class="chip">{t}</li>)}
+</ul>

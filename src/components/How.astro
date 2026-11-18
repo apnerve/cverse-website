@@ -1,22 +1,10 @@
 ---
-import Icon from './Icon.astro';
-import SectionHeading from './SectionHeading.astro';
+import Section from './Section.astro';
+import FeatureCard from './FeatureCard.astro';
 import { execSteps as steps, execHowSection as section } from '../data/exec';
 ---
-<section id="how-we-work" class="border-b border-line bg-surface-2" aria-labelledby="how-title">
-  <div class="container-page py-20 sm:py-24">
-    <SectionHeading id="how-title" {...section} />
-    <ol class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-      {steps.map((s) => (
-        <li class="card flex flex-col p-7">
-          <div class="flex items-center justify-between">
-            <span class="icon-tile"><Icon name={s.icon} /></span>
-            <span class="font-mono text-sm font-medium text-ink-500" aria-hidden="true">{s.step}</span>
-          </div>
-          <h3 class="mt-5 text-lg font-semibold leading-snug text-ink-950">{s.title}</h3>
-          <p class="mt-3 text-base leading-relaxed text-ink-600">{s.description}</p>
-        </li>
-      ))}
-    </ol>
-  </div>
-</section>
+<Section id="how-we-work" tone="alt" heading={section}>
+  <ol class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    {steps.map((s) => <FeatureCard icon={s.icon} meta={s.step} title={s.title} description={s.description} />)}
+  </ol>
+</Section>

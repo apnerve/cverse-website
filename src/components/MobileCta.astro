@@ -4,7 +4,7 @@
  * shown only while none of the page's [data-cta] buttons is on screen.
  * Driven by the observer in Header.astro. Desktop never renders it (md:hidden).
  */
-import { ArrowRight } from '@lucide/astro';
+import CtaButton from './CtaButton.astro';
 import { execCtaLabel } from '../data/exec';
 
 interface Props { base: string }
@@ -12,10 +12,7 @@ const { base } = Astro.props;
 ---
 <div id="mobile-cta" class="mobile-cta fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/90 backdrop-blur-md md:hidden" data-hidden>
   <div class="container-page">
-    <a href={`${base}#contact`} class="btn btn-primary w-full">
-      {execCtaLabel}
-      <ArrowRight class="btn-icon h-4 w-4" aria-hidden="true" />
-    </a>
+    <CtaButton href={`${base}#contact`} label={execCtaLabel} class="w-full" />
   </div>
 </div>
 <!-- Keeps the last lines of the footer clear of the bar. -->

@@ -1,5 +1,6 @@
 ---
-import { ArrowRight, Check } from '@lucide/astro';
+import { Check } from '@lucide/astro';
+import CtaButton from './CtaButton.astro';
 import { execHero as hero } from '../data/exec';
 ---
 <section id="top" class="relative -mt-16 overflow-hidden border-b border-line bg-surface">
@@ -20,11 +21,8 @@ import { execHero as hero } from '../data/exec';
       </h1>
       <p class="lead rise rise-3 mt-6 max-w-2xl">{hero.lead}</p>
       <div class="rise rise-4 mt-8 flex flex-wrap items-center gap-3">
-        <a href={hero.primaryCta.href} class="btn btn-primary" data-cta>
-          {hero.primaryCta.label}
-          <ArrowRight class="btn-icon h-4 w-4" aria-hidden="true" />
-        </a>
-        <a href={hero.secondaryCta.href} class="btn btn-secondary">{hero.secondaryCta.label}</a>
+        <CtaButton href={hero.primaryCta.href} label={hero.primaryCta.label} cta />
+        <CtaButton href={hero.secondaryCta.href} label={hero.secondaryCta.label} variant="secondary" />
       </div>
       <ul class="rise rise-4 mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-600" aria-label="Engagement basics">
         {hero.facts.map((f) => (

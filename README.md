@@ -32,6 +32,8 @@ If a dev server already holds port 4321, run the tests on another port: `PORT=43
   (team size, founding year, client outcomes) can be added later.
 - `src/data/site.ts` – company name, email, address, social URLs, default title and description.
 - `src/components/` – page sections. `Landing.astro` composes the home page; `LegalPage.astro` wraps the privacy policy.
+  Building blocks shared by the sections: `Section` (band + heading, optional split layout), `FeatureCard` (icon card),
+  `ChipList` (tags) and `CtaButton` (primary/secondary link). All are props-only; no component holds state.
 - `src/components/Header.astro` and `MobileCta.astro` – the floating call to action. The header button
   (desktop) and the bottom bar (mobile) show only while no other call-to-action button is on screen.
 - `src/layouts/Base.astro` – `<head>`, meta/OG tags, JSON-LD. `Shell.astro` adds the theme CSS and font faces.

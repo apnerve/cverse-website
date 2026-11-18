@@ -1,0 +1,15 @@
+---
+/**
+ * Call-to-action link. Primary carries the arrow; secondary is the outlined button.
+ * `cta` marks it as one of the page's own calls to action that the floating header
+ * button and mobile bar yield to (see Header.astro).
+ */
+import { ArrowRight } from '@lucide/astro';
+
+interface Props { href: string; label: string; variant?: 'primary' | 'secondary'; class?: string; cta?: boolean }
+const { href, label, variant = 'primary', class: className = '', cta = false } = Astro.props;
+---
+<a href={href} class={`btn btn-${variant} ${className}`.trim()} data-cta={cta ? '' : undefined}>
+  {label}
+  {variant === 'primary' && <ArrowRight class="btn-icon h-4 w-4" aria-hidden="true" />}
+</a>

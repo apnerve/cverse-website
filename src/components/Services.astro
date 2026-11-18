@@ -1,25 +1,16 @@
 ---
-import Icon from './Icon.astro';
-import SectionHeading from './SectionHeading.astro';
+import Section from './Section.astro';
+import FeatureCard from './FeatureCard.astro';
+import ChipList from './ChipList.astro';
 import { execServices as services, execServicesSection as section } from '../data/exec';
 ---
-<section id="services" class="border-b border-line bg-surface-2" aria-labelledby="services-title">
-  <div class="container-page py-20 sm:py-24">
-    <SectionHeading id="services-title" {...section} />
-    <div class="mt-14 grid gap-6 md:grid-cols-2">
-      {services.map((s, i) => (
-        <article class={`card flex flex-col p-7 spot-${i + 1}`}>
-          <div class="flex items-center gap-4">
-            <span class="icon-tile"><Icon name={s.icon} /></span>
-            <h3 class="text-lg font-semibold leading-snug text-ink-950">{s.title}</h3>
-          </div>
-          <p class="mt-4 text-base leading-relaxed text-ink-600">{s.description}</p>
-          <p class="mt-4 flex-1 border-l-2 border-brand-300 pl-4 text-sm leading-relaxed text-ink-700">{s.fit}</p>
-          <ul class="mt-5 flex flex-wrap items-center gap-2 border-t border-line pt-5" aria-label="Capabilities">
-            {s.tags.map((t) => <li class="chip">{t}</li>)}
-          </ul>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
+<Section id="services" tone="alt" heading={section}>
+  <ul class="mt-14 grid gap-6 md:grid-cols-2">
+    {services.map((s, i) => (
+      <FeatureCard icon={s.icon} title={s.title} description={s.description} class={`spot-${i + 1}`}>
+        <p class="mt-4 flex-1 border-l-2 border-brand-300 pl-4 text-sm leading-relaxed text-ink-700">{s.fit}</p>
+        <ChipList items={s.tags} label="Capabilities" class="mt-5 border-t border-line pt-5" />
+      </FeatureCard>
+    ))}
+  </ul>
+</Section>

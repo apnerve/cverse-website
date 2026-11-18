@@ -1,0 +1,41 @@
+---
+/**
+ * Page section: full-width band, container, optional heading, content slot.
+ * `split` puts the heading in a left column and the slot content in a right column.
+ * The heading id is `${id}-title` and labels the section; pass `labelledby` instead
+ * when the heading is rendered inside the slot (see Contact).
+ */
+import SectionHeading from './SectionHeading.astro';
+
+interface Props {
+  id: string;
+  tone?: 'base' | 'alt';
+  heading?: { eyebrow: string; title: string; intro?: string };
+  split?: boolean;
+  labelledby?: string;
+}
+const { id, tone = 'base', heading, split = false, labelledby } = Astro.props;
+const titleId = heading ? `${id}-title` : labelledby;
+const bg = tone === 'alt' ? 'bg-surface-2' : 'bg-surface';
+---
+<section id={id} class={`border-b border-line ${bg}`} aria-labelledby={titleId}>
+  <div class="container-page py-20 sm:py-24">
+    {heading && split ? (
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-5">
+          <SectionHeading id={titleId} {...heading} />
+        </div>
+        <div class="lg:col-span-7">
+          <slot />
+        </div>
+      </div>
+    ) : heading ? (
+      <>
+        <SectionHeading id={titleId} {...heading} />
+        <slot />
+      </>
+    ) : (
+      <slot />
+    )}
+  </div>
+</section>
