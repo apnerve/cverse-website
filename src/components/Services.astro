@@ -8,7 +8,7 @@ import { execServices as services, execServicesSection as section } from '../dat
   <ul class="mt-14 grid gap-6 md:grid-cols-2">
     {services.map((s, i) => (
       <FeatureCard icon={s.icon} title={s.title} description={s.description} class={`spot-${i + 1}`}>
-        <p class="mt-4 flex-1 border-l-2 border-brand-300 pl-4 text-sm leading-relaxed text-ink-700">{s.fit}</p>
+        <p class="mt-4 flex-1 border-l-2 border-line-strong pl-4 text-sm leading-relaxed text-ink-700">{s.fit}</p>
         <ChipList items={s.tags} label="Capabilities" class="mt-5 border-t border-line pt-5" />
       </FeatureCard>
     ))}

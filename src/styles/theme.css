@@ -1,85 +1,87 @@
-/* Theme. Brand palette (Obsidian, Snow, Zinc, Slate, Petrol, Signal Teal).
-   Headlines in Space Grotesk, body in Timeless Grotesk with Inter as fallback. */
-@import "@fontsource-variable/space-grotesk";
-@import "@fontsource-variable/inter";
+/* Theme: "Industrial Sovereign Infrastructure".
+   Cool concrete canvas, white surfaces, hairline slate borders, deep-slate ink,
+   a forest-green primary action, and one emerald accent used sparingly.
+   IBM Plex Sans for everything that reads, IBM Plex Mono for technical metadata. */
+@import "@fontsource-variable/ibm-plex-sans";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
 
 :root {
-  --t-font-display: "Space Grotesk Variable", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --t-font-body: "Timeless Grotesk", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --t-heading-weight: 700; /* Space Grotesk's heaviest weight */
-  --t-display-tracking: -0.03em;
+  /* ---- Design tokens ------------------------------------------------- */
+  --font-sans: "IBM Plex Sans Variable", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  /* Brand neutrals */
-  --obsidian: #09090B;
-  --snow: #F8FAFC;
-  --zinc: #A1A1AA;
-  --slate: #52525B;
-  --petrol: #0F6E7A;
-  --petrol-light: #3AAFBD; /* the mark on dark surfaces; Petrol itself is 3.4:1 on Obsidian */
-  --signal-teal: #2DD4BF;
+  --bg-canvas: #F4F5F7;     /* cool architectural concrete */
+  --bg-surface: #FFFFFF;    /* elevated surface, cards */
+  --bg-subtle: #ECEEF2;     /* recessed surface */
+  --border-default: #D8DCE3;
+  --border-strong: #94A3B8;
+  --border-button: #CBD5E1;
 
-  --t-surface: var(--snow);
-  --t-surface-2: color-mix(in srgb, var(--obsidian) 3%, var(--snow));
-  --t-card: #ffffff;
-  --t-line: color-mix(in srgb, var(--obsidian) 8%, transparent);
-  --t-line-strong: color-mix(in srgb, var(--obsidian) 16%, transparent);
+  --text-primary: #0F172A;  /* deep slate */
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-chip: #334155;
 
-  --t-ink-950: var(--obsidian);
-  --t-ink-900: color-mix(in srgb, var(--obsidian) 92%, var(--snow));
-  --t-ink-700: color-mix(in srgb, var(--obsidian) 76%, var(--snow));
-  --t-ink-600: var(--slate);
-  --t-ink-500: color-mix(in srgb, var(--obsidian) 58%, var(--snow));
-  --t-ink-400: var(--zinc);
-  --t-ink-300: color-mix(in srgb, var(--obsidian) 24%, var(--snow));
+  --cta-primary-bg: #064E3B;     /* deep sovereign forest green */
+  --cta-primary-hover: #04392B;
+  --cta-primary-fg: #FFFFFF;
 
-  /* One brand colour; lighter steps are tints of it on Snow */
-  --t-brand-50: color-mix(in srgb, var(--petrol) 8%, var(--snow));
-  --t-brand-100: color-mix(in srgb, var(--petrol) 14%, var(--snow));
-  --t-brand-200: color-mix(in srgb, var(--petrol) 28%, var(--snow));
-  --t-brand-300: color-mix(in srgb, var(--petrol) 50%, var(--snow));
-  --t-brand-400: color-mix(in srgb, var(--petrol) 75%, var(--snow));
-  --t-brand-500: var(--petrol);
-  --t-brand-600: var(--petrol);
-  --t-brand-700: var(--petrol);
-  --t-brand-800: var(--petrol);
-  --t-brand-900: var(--petrol);
-  --t-on-brand: var(--snow);
-  --t-heading-accent: var(--petrol);
-  --t-highlight: var(--signal-teal);
-  --t-mark: var(--petrol); /* fill of the c, chevron and cursor in the inline wordmark */
+  --accent-sovereign: #047857;   /* emerald 700: step numbers, focus rings, the mark */
+  --accent-sovereign-dark: #34D399; /* the mark on the dark footer (emerald 400) */
+  --accent-tint: #ECFDF5;
+  --accent-tint-border: #A7F3D0;
 
-  /* Petrol is 5.7:1 on Snow, so it could carry small text; links stay ink by choice */
-  --t-icon-fg: var(--petrol);
-  --t-link: var(--obsidian);
-  --t-link-underline: var(--petrol);
-  --t-link-hover: var(--petrol);
+  --grid-line: rgb(226 232 240 / 0.35); /* #E2E8F0 at 35% */
 
-  /* Primary action is Obsidian; Petrol is reserved for the c, the chevron, the cursor and accents */
-  --t-btn-bg: var(--obsidian);
-  --t-btn-fg: var(--snow);
-  --t-btn-hover: color-mix(in srgb, var(--obsidian) 84%, var(--snow));
+  /* ---- Semantic mapping read by global.css and the Tailwind theme ---- */
+  --t-font-display: var(--font-sans);
+  --t-font-body: var(--font-sans);
+  --t-font-mono: var(--font-mono);
+  --t-heading-weight: 600;
+  --t-display-tracking: -0.02em;
 
-  --t-code-bg: var(--obsidian);
-  --t-code-fg: var(--snow);
-  --t-code-key: var(--petrol);
-  --t-code-dim: var(--zinc);
+  --t-surface: var(--bg-surface);
+  --t-surface-2: var(--bg-canvas);
+  --t-subtle: var(--bg-subtle);
+  --t-card: var(--bg-surface);
+  --t-line: var(--border-default);
+  --t-line-strong: var(--border-strong);
 
-  --t-footer-bg: var(--obsidian);
-  --t-footer-fg: var(--snow);
-  --t-footer-muted: var(--zinc);
-  --t-footer-line: rgb(248 250 252 / 0.1);
-  --t-footer-chip: rgb(248 250 252 / 0.06);
+  --t-ink-950: var(--text-primary);
+  --t-ink-900: var(--text-primary);
+  --t-ink-700: var(--text-secondary);
+  --t-ink-600: var(--text-secondary);
+  --t-ink-500: var(--text-muted);
+  --t-ink-400: var(--text-muted);
+  --t-ink-300: var(--border-strong);
 
-  --t-radius: 0.375rem;
-  --t-radius-lg: 0.5rem;
-  --t-radius-btn: 0.375rem;
-  --t-shadow-card: 0 1px 2px rgb(9 9 11 / 0.04);
-  --t-shadow-card-hover: 0 8px 24px -12px rgb(9 9 11 / 0.18);
-  --t-shadow-btn: 0 1px 2px rgb(9 9 11 / 0.12);
+  --t-accent: var(--accent-sovereign);
+  --t-accent-tint: var(--accent-tint);
+  --t-accent-tint-border: var(--accent-tint-border);
+  --t-mark: var(--accent-sovereign); /* fill of the c, chevron and cursor in the inline wordmark */
+  --t-heading-accent: var(--text-primary); /* headlines are one colour */
 
-  /* Hero blob colours for the animated background (same markup as the Motion version). */
-  --spot-blue: var(--t-brand-400);
-  --spot-indigo: var(--t-brand-500);
-  --spot-teal: var(--t-brand-300);
-  --spot-yellow: var(--t-brand-100);
+  --t-icon-fg: var(--text-primary);
+  --t-link: var(--text-primary);
+  --t-link-underline: var(--border-strong);
+  --t-link-hover: var(--text-primary);
+
+  --t-btn-bg: var(--cta-primary-bg);
+  --t-btn-fg: var(--cta-primary-fg);
+  --t-btn-hover: var(--cta-primary-hover);
+  --t-btn-border: var(--cta-primary-hover);
+  --t-btn-secondary-bg: var(--bg-surface);
+  --t-btn-secondary-border: var(--border-button);
+  --t-btn-secondary-hover-border: var(--text-primary);
+
+  --t-footer-bg: var(--text-primary);
+  --t-footer-fg: #FFFFFF;
+  --t-footer-muted: var(--border-strong);
+  --t-footer-line: rgb(255 255 255 / 0.12);
+  --t-footer-chip: rgb(255 255 255 / 0.08);
+
+  --t-radius: 4px;
+  --t-radius-lg: 6px;
+  --t-radius-btn: 6px;
 }

@@ -4,5 +4,5 @@ export const legalPages = ['/privacy/'];
 export const reviewPages = ['/brand/'];
 export const allPages = [...landingPages, ...legalPages, ...reviewPages];
 
-/** Headline typeface; the body uses Timeless Grotesk once its files are added, Inter until then. */
-export const expectedFont = 'Space Grotesk Variable';
+/** Typeface for headings and body. */
+export const expectedFont = 'IBM Plex Sans Variable';

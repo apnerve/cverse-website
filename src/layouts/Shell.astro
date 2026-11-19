@@ -1,22 +1,11 @@
 ---
 import '../styles/theme.css';
 import Base from './Base.astro';
-import { withBase } from '../lib/base';
-
-const fontDir = withBase('/fonts/timeless');
 
 interface Props { title?: string; description?: string; path: string }
 const props = Astro.props;
 ---
 <Base {...props}>
-  <Fragment slot="head">
-    {/* Timeless Grotesk, Timeless Free Font License. Files live in /public/fonts/timeless/ (see README there).
-        Until they are added the browser falls back to Inter. */}
-    <style is:inline set:html={`
-@font-face{font-family:"Timeless Grotesk";src:url("${fontDir}/TimelessGroteskVF.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
-@font-face{font-family:"Timeless Grotesk";src:url("${fontDir}/TimelessGroteskItalicVF.woff2") format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
-`} />
-    <slot name="head" />
-  </Fragment>
+  <Fragment slot="head"><slot name="head" /></Fragment>
   <slot />
 </Base>

@@ -10,7 +10,6 @@ for (const path of allPages) {
     const failedRequests: string[] = [];
     page.on('console', (m) => {
       if (m.type() !== 'error') return;
-      if (m.location()?.url?.includes('/fonts/timeless/')) return; // client-supplied font, see public/fonts/timeless/README.md
       consoleErrors.push(`${m.text()} (${m.location()?.url ?? ''})`);
     });
     page.on('pageerror', (e) => consoleErrors.push(e.message));
@@ -19,9 +18,7 @@ for (const path of allPages) {
     const res = await page.goto(path, { waitUntil: 'networkidle' });
     expect(res?.status()).toBe(200);
 
-    // Timeless Grotesk files are supplied by the client; tolerate only those 404s.
-    const unexpected = failedRequests.filter((u) => !u.includes('/fonts/timeless/'));
-    expect(unexpected, unexpected.join('\n')).toEqual([]);
+    expect(failedRequests, failedRequests.join('\n')).toEqual([]);
     expect(consoleErrors, consoleErrors.join('\n')).toEqual([]);
 
     // Exactly one h1, a title and a meta description.
@@ -62,9 +59,6 @@ test(`/ uses ${expectedFont}`, async ({ page }) => {
   expect(family).toContain(expectedFont);
   const loaded = await page.evaluate((f) => document.fonts.check(`600 16px "${f}"`), expectedFont);
   expect(loaded, `${expectedFont} should be loaded`).toBe(true);
-  // Body falls back to Inter until the Timeless Grotesk files are added to /public/fonts/timeless/.
-  const body = await page.evaluate(() => document.fonts.check('400 16px "Timeless Grotesk"'));
-  test.info().annotations.push({ type: 'note', description: `Timeless Grotesk (body) loaded: ${body}` });
 });
 
 for (const path of landingPages) {
@@ -114,11 +108,12 @@ test('floating call to action yields to the hero and contact buttons', async ({ 
   expect(focusable).toBe(false);
 });
 
-test('reduced motion disables the hero animation', async ({ browser }) => {
+test('reduced motion disables the entrance and cursor animations', async ({ browser }) => {
   const ctx = await browser.newContext({ reducedMotion: 'reduce' });
   const page = await ctx.newPage();
   await page.goto('/');
-  const anim = await page.locator('.hero-blob-a').evaluate((el) => getComputedStyle(el).animationName);
-  expect(anim).toBe('none');
+  const names = await page.locator('h1.rise, .wordmark .cursor').evaluateAll((els) => els.map((el) => getComputedStyle(el).animationName));
+  expect(names.length).toBeGreaterThan(0);
+  for (const n of names) expect(n).toBe('none');
   await ctx.close();
 });

@@ -36,7 +36,7 @@ If a dev server already holds port 4321, run the tests on another port: `PORT=43
   `ChipList` (tags) and `CtaButton` (primary/secondary link). All are props-only; no component holds state.
 - `src/components/Header.astro` and `MobileCta.astro` – the floating call to action. The header button
   (desktop) and the bottom bar (mobile) show only while no other call-to-action button is on screen.
-- `src/layouts/Base.astro` – `<head>`, meta/OG tags, JSON-LD. `Shell.astro` adds the theme CSS and font faces.
+- `src/layouts/Base.astro` – `<head>`, meta/OG tags, JSON-LD. `Shell.astro` adds the theme CSS (tokens and the IBM Plex fonts).
 - `src/styles/global.css` – Tailwind import, semantic design tokens, components, animations.
 - `src/styles/theme.css` – colours, radii, shadows, typefaces.
 - `tests/` – Playwright suites. `playwright.config.ts` builds and serves `dist/` (via `scripts/serve.mjs`) automatically.
@@ -55,8 +55,6 @@ is included). For the production domain, build without those env vars (defaults:
    release cadence, support period, SOC 2 status, reply time, and references. Fill or delete the `SLOT` comments.
 2. **Social links.** Set `site.social.linkedin` and `site.social.x` in `src/data/site.ts`. Icons are hidden
    while a URL is empty, so no dead links ship.
-3. **Timeless Grotesk.** Download from https://www.timeless.co/type and follow
-   `public/fonts/timeless/README.md`. Until then body text falls back to Inter.
-4. **Domain.** `astro.config.mjs` defaults to `https://cverse.ai` at `/` (overridable with `SITE_URL` and
+3. **Domain.** `astro.config.mjs` defaults to `https://cverse.ai` at `/` (overridable with `SITE_URL` and
    `BASE_PATH`); `site.url` in `src/data/site.ts` feeds canonical and Open Graph URLs. `robots.txt` references the sitemap.
-5. **Privacy policy** was drafted for review, not by a lawyer. Have it checked before publishing.
+4. **Privacy policy** was drafted for review, not by a lawyer. Have it checked before publishing.

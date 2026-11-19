@@ -23,7 +23,7 @@ const row = layout === 'row';
     <>
       <span class="icon-tile"><Icon name={icon} /></span>
       <div>
-        <h3 class="text-lg font-semibold leading-snug text-ink-950">{title}</h3>
+        <h3 class="text-lg font-semibold text-ink-950">{title}</h3>
         <p class="mt-2 text-base leading-relaxed text-ink-600">{description}</p>
         <slot />
       </div>
@@ -33,12 +33,12 @@ const row = layout === 'row';
       <div class={`flex items-center ${meta ? 'justify-between' : 'gap-4'}`}>
         <span class="icon-tile"><Icon name={icon} /></span>
         {meta ? (
-          <span class="font-mono text-sm font-medium text-ink-500" aria-hidden="true">{meta}</span>
+          <span class="font-mono text-sm font-medium text-accent" aria-hidden="true">{meta}</span>
         ) : (
-          <h3 class="text-lg font-semibold leading-snug text-ink-950">{title}</h3>
+          <h3 class="text-lg font-semibold text-ink-950">{title}</h3>
         )}
       </div>
-      {meta && <h3 class="mt-5 text-lg font-semibold leading-snug text-ink-950">{title}</h3>}
+      {meta && <h3 class="mt-5 text-lg font-semibold text-ink-950">{title}</h3>}
       <p class={`${meta ? 'mt-3' : 'mt-4'} text-base leading-relaxed text-ink-600`}>{description}</p>
       <slot />
     </>
