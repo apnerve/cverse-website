@@ -11,14 +11,14 @@ const { base } = Astro.props;
   <div class="container-page flex h-16 items-center justify-between gap-4">
     <Logo base={base} />
 
-    <nav class="hidden items-center gap-7 md:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary">
       {execNav.map((item) => (
         <a href={`${base}${item.href}`} class="nav-link">{item.label}</a>
       ))}
     </nav>
 
     {/* Shown only while no other call to action is in the viewport; see the script below. */}
-    <div id="header-cta" class="header-cta hidden items-center md:flex" data-hidden>
+    <div id="header-cta" class="header-cta hidden items-center lg:flex" data-hidden>
       <CtaButton href={`${base}#contact`} label={execCtaLabel} />
     </div>
     <noscript><style is:inline>#header-cta { opacity: 1; visibility: visible; }</style></noscript>
@@ -26,7 +26,7 @@ const { base } = Astro.props;
     <button
       id="menu-toggle"
       type="button"
-      class="inline-flex items-center justify-center rounded-ui p-2 text-ink-700 hover:bg-surface-2 md:hidden"
+      class="inline-flex items-center justify-center rounded-ui p-2 text-ink-700 hover:bg-surface-2 lg:hidden"
       aria-label="Open menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -36,7 +36,7 @@ const { base } = Astro.props;
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden border-t border-line bg-surface md:hidden">
+  <div id="mobile-menu" class="hidden border-t border-line bg-surface lg:hidden">
     <nav class="container-page flex flex-col py-3" aria-label="Mobile">
       {execNav.map((item) => (
         <a href={`${base}${item.href}`} class="rounded-ui px-2 py-2.5 text-sm font-medium text-ink-700 hover:bg-surface-2">{item.label}</a>
@@ -82,7 +82,7 @@ const { base } = Astro.props;
   };
   toggle?.addEventListener('click', () => setOpen(menu?.classList.contains('hidden') ?? false));
   menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
-  window.matchMedia('(min-width: 48rem)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+  window.matchMedia('(min-width: 64rem)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
 
   // Header button (desktop) and bottom bar (mobile): visible only while none of the page's own
   // call-to-action buttons ([data-cta] in the hero, the contact section, and the open mobile menu)

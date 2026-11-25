@@ -191,22 +191,36 @@
   }
   .nav-link:hover { color: var(--t-ink-950); }
 
-  .prose-legal h2 {
+  /* Long-form text: the privacy policy and case-study bodies (rendered Markdown). */
+  .prose > :first-child { margin-top: 0; }
+  .prose h2 {
     margin-top: 2.5rem;
     font-size: 1.375rem;
     font-weight: 600;
     color: var(--t-ink-950);
   }
-  .prose-legal h3 {
+  .prose h3 {
     margin-top: 1.75rem;
     font-size: 1.0625rem;
     font-weight: 600;
     color: var(--t-ink-900);
   }
-  .prose-legal p, .prose-legal li { margin-top: 0.875rem; line-height: 1.7; color: var(--t-ink-600); }
-  .prose-legal ul { list-style: disc; padding-left: 1.5rem; }
-  .prose-legal a { color: var(--t-link); text-decoration: underline; text-decoration-color: var(--t-link-underline); text-underline-offset: 3px; }
-  .prose-legal a:hover { color: var(--t-link-hover); text-decoration-color: currentColor; }
+  .prose h2 + h3 { margin-top: 1rem; }
+  .prose p, .prose li { margin-top: 0.875rem; line-height: 1.7; color: var(--t-ink-600); }
+  .prose ul { list-style: disc; padding-left: 1.5rem; }
+  .prose ol { list-style: decimal; padding-left: 1.5rem; }
+  .prose li { margin-top: 0.5rem; }
+  .prose strong { font-weight: 600; color: var(--t-ink-900); }
+  .prose code { font-family: var(--t-font-mono); font-size: 0.875em; }
+  .prose blockquote {
+    margin-top: 1.5rem;
+    border-left: 2px solid var(--t-line-strong);
+    padding-left: 1.5rem;
+    color: var(--t-ink-900);
+  }
+  .prose blockquote p { color: inherit; }
+  .prose a { color: var(--t-link); text-decoration: underline; text-decoration-color: var(--t-link-underline); text-underline-offset: 3px; }
+  .prose a:hover { color: var(--t-link-hover); text-decoration-color: currentColor; }
 }
 
 /* ------------------------------------------------------------------ */

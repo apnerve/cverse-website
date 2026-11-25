@@ -12,7 +12,7 @@
     "astro": "astro",
     "test": "playwright test",
     "og-image": "node scripts/og-image.mjs",
-    "spell": "cspell --no-progress \"src/**/*.{astro,ts}\" \"dist/**/*.html\""
+    "spell": "cspell --no-progress \"src/**/*.{astro,ts,md}\" \"dist/**/*.html\""
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.5",

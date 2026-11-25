@@ -22,6 +22,7 @@ export const execNav = [
   { label: 'How we work', href: '#how-we-work' },
   { label: 'What you receive', href: '#what-you-receive' },
   { label: 'FAQ', href: '#faq' },
+  { label: 'Case studies', href: 'case-studies/' },
   { label: 'About', href: '#about' },
 ];
 
@@ -248,7 +249,13 @@ export const execAboutPoints = [
   },
 ];
 
-// SLOT: client outcomes. When publishable, add a short list (industry, problem, result) between FAQ and About.
+/** Home-page section and the /case-studies/ index. The entries themselves are Markdown files in src/content/case-studies/. */
+export const execCaseStudiesSection = {
+  title: 'Client work',
+  intro:
+    'Engagements we can describe. Client names are withheld where the client asks; the problem, what we built, and what was handed over are as delivered.', // CONFIRM wording with each client before go-live
+  cta: 'All case studies',
+};
 
 export const execContact = {
   title: 'Tell us what you are trying to do.',
@@ -267,5 +274,6 @@ export const execFooter = {
     'Private models and fine-tuning',
   ],
   contactHeading: 'Contact',
+  pageLinks: [{ label: 'Case studies', href: 'case-studies/' }],
   legalLinks: [{ label: 'Privacy Policy', href: 'privacy/' }],
 };

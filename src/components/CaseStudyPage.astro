@@ -1,0 +1,74 @@
+---
+/**
+ * Case-study page: intro band with the facts, key outcomes, the Markdown body (default slot),
+ * any quotes, then the contact card. Header and footer included, like LegalPage.
+ */
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import MobileCta from './MobileCta.astro';
+import Section from './Section.astro';
+import ChipList from './ChipList.astro';
+import StatList from './StatList.astro';
+import Quote from './Quote.astro';
+import Contact from './Contact.astro';
+import { withBase } from '../lib/base';
+import { CASE_STUDIES_PATH, type CaseStudy } from '../lib/case-studies';
+
+interface Props { base: string; entry: CaseStudy }
+const { base, entry } = Astro.props;
+const d = entry.data;
+const facts: { term: string; value: string }[] = [
+  { term: 'Client', value: d.client },
+  { term: 'Industry', value: d.industry },
+  { term: 'Engagement', value: d.engagement },
+  { term: 'Duration', value: d.duration },
+  { term: 'Services', value: d.services.join(', ') },
+];
+---
+<Header base={base} />
+<main id="main">
+  <article>
+    <header class="border-b border-line bg-surface">
+      <div class="container-page py-16 sm:py-20">
+        <p class="meta text-ink-500">
+          <a href={withBase(CASE_STUDIES_PATH)} class="hover:text-ink-900">Case studies</a>
+          <span aria-hidden="true"> · </span>{d.industry}
+        </p>
+        <h1 class="section-title mt-4 max-w-3xl">{d.title}</h1>
+        <p class="lead mt-5 max-w-2xl">{d.summary}</p>
+
+        <dl class="mt-12 max-w-3xl space-y-5">
+          {facts.map((f) => (
+            <div class="grid gap-2 border-t border-line pt-5 sm:grid-cols-[13rem_1fr]">
+              <dt class="meta text-ink-500">{f.term}</dt>
+              <dd class="text-base text-ink-900">{f.value}</dd>
+            </div>
+          ))}
+          <div class="grid gap-2 border-t border-line pt-5 sm:grid-cols-[13rem_1fr]">
+            <dt class="meta text-ink-500">Stack</dt>
+            <dd><ChipList items={d.stack} /></dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <Section id="outcomes" tone="alt" heading={{ title: 'Key outcomes' }}>
+      <StatList items={d.outcomes} class="mt-12" />
+    </Section>
+
+    <Section id="story" labelledby="story-title">
+      <h2 id="story-title" class="sr-only">The story</h2>
+      <div class="prose max-w-3xl">
+        <slot />
+      </div>
+      {d.quotes && d.quotes.length > 0 && (
+        <div class="mt-14 max-w-3xl space-y-10">
+          {d.quotes.map((q) => <Quote {...q} />)}
+        </div>
+      )}
+    </Section>
+  </article>
+  <Contact />
+</main>
+<Footer base={base} />
+<MobileCta base={base} />

@@ -29,3 +29,6 @@ playwright-report/
 
 # brand working files (kept local)
 /brand/
+
+# case-study facts files (may name anonymised clients; kept local)
+/case-study-facts/

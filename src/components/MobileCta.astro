@@ -2,7 +2,7 @@
 /**
  * Mobile counterpart of the header button: a bar fixed to the bottom of the viewport,
  * shown only while none of the page's [data-cta] buttons is on screen.
- * Driven by the observer in Header.astro. Desktop never renders it (md:hidden).
+ * Driven by the observer in Header.astro. Desktop never renders it (lg:hidden; below that the header shows the menu button).
  */
 import CtaButton from './CtaButton.astro';
 import { execCtaLabel } from '../data/exec';
@@ -10,13 +10,13 @@ import { execCtaLabel } from '../data/exec';
 interface Props { base: string }
 const { base } = Astro.props;
 ---
-<div id="mobile-cta" class="mobile-cta fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/90 backdrop-blur-md md:hidden" data-hidden>
+<div id="mobile-cta" class="mobile-cta fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/90 backdrop-blur-md lg:hidden" data-hidden>
   <div class="container-page">
     <CtaButton href={`${base}#contact`} label={execCtaLabel} class="w-full" />
   </div>
 </div>
 <!-- Keeps the last lines of the footer clear of the bar. -->
-<div class="mobile-cta-spacer md:hidden" aria-hidden="true"></div>
+<div class="mobile-cta-spacer lg:hidden" aria-hidden="true"></div>
 
 <style>
   .mobile-cta {

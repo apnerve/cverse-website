@@ -2,7 +2,7 @@
 import '../styles/theme.css';
 import Base from './Base.astro';
 
-interface Props { title?: string; description?: string; path: string }
+interface Props { title?: string; description?: string; path: string; type?: 'website' | 'article' }
 const props = Astro.props;
 ---
 <Base {...props}>
