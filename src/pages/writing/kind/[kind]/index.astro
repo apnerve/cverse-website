@@ -1,0 +1,30 @@
+---
+import Shell from '../../../../layouts/Shell.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import MobileCta from '../../../../components/MobileCta.astro';
+import Contact from '../../../../components/Contact.astro';
+import WritingList from '../../../../components/WritingList.astro';
+import { execWritingSection as section } from '../../../../data/exec';
+import { site } from '../../../../data/site';
+import { withBase } from '../../../../lib/base';
+import { KINDS, KIND_PLURALS, byKind, kindPath, type Kind } from '../../../../lib/writing';
+
+// Every kind gets a page, even an empty one, so the filter links never 404.
+export function getStaticPaths() {
+  return KINDS.map((kind) => ({ params: { kind } }));
+}
+
+const kind = Astro.params.kind as Kind;
+const base = withBase('/');
+const entries = await byKind(kind);
+---
+<Shell path={kindPath(kind)} title={`${KIND_PLURALS[kind]} — ${site.name}`} description={section.intro}>
+  <Header base={base} />
+  <main id="main">
+    <WritingList entries={entries} current={kind} />
+    <Contact />
+  </main>
+  <Footer base={base} />
+  <MobileCta base={base} />
+</Shell>

@@ -191,7 +191,7 @@
   }
   .nav-link:hover { color: var(--t-ink-950); }
 
-  /* Long-form text: the privacy policy and case-study bodies (rendered Markdown). */
+  /* Long-form text: the privacy policy and writing bodies (rendered Markdown). */
   .prose > :first-child { margin-top: 0; }
   .prose h2 {
     margin-top: 2.5rem;

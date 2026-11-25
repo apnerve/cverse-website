@@ -18,6 +18,10 @@ export default defineConfig({
   redirects: {
     '/exec/': base,
     '/exec/privacy/': `${base}privacy/`,
+    // Case studies moved under /writing/ when notes and guides joined them. Only these two URLs ever
+    // existed under the old path; new pieces need no entry here.
+    '/case-studies/': `${base}writing/`,
+    '/case-studies/open-weight-serving-poc/': `${base}writing/open-weight-serving-poc/`,
   },
   vite: {
     plugins: [tailwindcss()],

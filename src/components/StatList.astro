@@ -1,9 +1,10 @@
 ---
 /** Key outcomes: a short headline over a one-line caption, set as a rule-topped grid. */
-interface Props { items: { headline: string; caption: string }[]; label?: string; class?: string }
-const { items, label = 'Key outcomes', class: className = '' } = Astro.props;
+interface Props { items: { headline: string; caption: string }[]; label?: string; columns?: 3 | 4; class?: string }
+const { items, label = 'Key outcomes', columns = 4, class: className = '' } = Astro.props;
+const cols = { 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' }[columns];
 ---
-<ul class={`grid gap-8 sm:grid-cols-2 lg:grid-cols-4 ${className}`.trim()} aria-label={label}>
+<ul class={`grid gap-8 sm:grid-cols-2 ${cols} ${className}`.trim()} aria-label={label}>
   {items.map((s) => (
     <li class="border-t-2 border-line-strong pt-5">
       <p class="text-2xl font-semibold tracking-tight text-ink-950 sm:text-3xl">{s.headline}</p>

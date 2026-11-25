@@ -2,20 +2,20 @@
 import { render } from 'astro:content';
 import type { InferGetStaticPropsType } from 'astro';
 import Shell from '../../layouts/Shell.astro';
-import CaseStudyPage from '../../components/CaseStudyPage.astro';
+import ArticlePage from '../../components/ArticlePage.astro';
 import { site } from '../../data/site';
 import { withBase } from '../../lib/base';
-import { getPublishedCaseStudies, caseStudyPath } from '../../lib/case-studies';
+import { getPublished, entryPath } from '../../lib/writing';
 
 export async function getStaticPaths() {
-  const entries = await getPublishedCaseStudies();
+  const entries = await getPublished();
   return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
 }
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { entry } = Astro.props as Props;
 const { Content } = await render(entry);
-const path = caseStudyPath(entry);
+const path = entryPath(entry);
 const published = entry.data.publishedAt.toISOString();
 
 const jsonLd = {
@@ -24,6 +24,7 @@ const jsonLd = {
   headline: entry.data.title,
   description: entry.data.summary,
   datePublished: published,
+  keywords: entry.data.tags.join(', ') || undefined,
   mainEntityOfPage: new URL(path, site.url).href,
   author: { '@type': 'Organization', name: site.name, url: site.url },
   publisher: { '@type': 'Organization', name: site.name, url: site.url },
@@ -34,7 +35,7 @@ const jsonLd = {
     <meta property="article:published_time" content={published} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
-  <CaseStudyPage base={withBase('/')} entry={entry}>
+  <ArticlePage base={withBase('/')} entry={entry}>
     <Content />
-  </CaseStudyPage>
+  </ArticlePage>
 </Shell>

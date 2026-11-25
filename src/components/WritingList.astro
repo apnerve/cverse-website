@@ -1,0 +1,50 @@
+---
+/**
+ * The writing index and the per-kind pages: a filter row of plain links (no script), then the cards.
+ * `current` is 'all' on the index and a kind on the kind pages.
+ */
+import ArticleCard from './ArticleCard.astro';
+import { withBase } from '../lib/base';
+import { WRITING_PATH, KINDS, KIND_PLURALS, kindHref, entryHref, type Entry, type Kind } from '../lib/writing';
+
+interface Props { entries: Entry[]; current: Kind | 'all' }
+const { entries, current } = Astro.props;
+const heading = current === 'all' ? 'Writing' : KIND_PLURALS[current];
+const filters: { label: string; href: string; key: Kind | 'all' }[] = [
+  { label: 'All', href: withBase(WRITING_PATH), key: 'all' },
+  ...KINDS.map((k) => ({ label: KIND_PLURALS[k], href: kindHref(k), key: k })),
+];
+---
+<section class="border-b border-line bg-surface" aria-labelledby="writing-title">
+  <div class="container-page py-16 sm:py-20">
+    <h1 id="writing-title" class="sr-only">{heading}</h1>
+    <nav aria-label="Filter by kind" class="flex flex-wrap gap-2">
+      {filters.map((f) => (
+        <a
+          href={f.href}
+          aria-current={f.key === current ? 'page' : undefined}
+          class={`chip transition-colors hover:text-ink-950 ${f.key === current ? 'ring-1 ring-line-strong text-ink-950' : ''}`.trim()}
+        >
+          {f.label}
+        </a>
+      ))}
+    </nav>
+    {entries.length > 0 ? (
+      <ul class="mt-10 grid gap-6 md:grid-cols-2" aria-label="Writing">
+        {entries.map((e) => (
+          <ArticleCard
+            href={entryHref(e)}
+            title={e.data.title}
+            summary={e.data.summary}
+            kind={e.data.kind}
+            publishedAt={e.data.publishedAt}
+            tags={e.data.tags}
+            headingTag="h2"
+          />
+        ))}
+      </ul>
+    ) : (
+      <p class="lead mt-10">Nothing here yet.</p>
+    )}
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+/** Home-page band: the three newest pieces of any kind, with a link to the full list. No heading: the cards carry it. Renders nothing while the collection is empty. */
+import Section from './Section.astro';
+import ArticleCard from './ArticleCard.astro';
+import CtaButton from './CtaButton.astro';
+import { execWritingSection as section } from '../data/exec';
+import { getPublished, entryHref, WRITING_PATH } from '../lib/writing';
+import { withBase } from '../lib/base';
+
+const latest = (await getPublished()).slice(0, 3);
+---
+{latest.length > 0 && (
+  <Section id="latest">
+    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" aria-label="Latest writing">
+      {latest.map((e) => (
+        <ArticleCard
+          href={entryHref(e)}
+          title={e.data.title}
+          summary={e.data.summary}
+          kind={e.data.kind}
+          publishedAt={e.data.publishedAt}
+          tags={e.data.tags}
+        />
+      ))}
+    </ul>
+    <CtaButton href={withBase(WRITING_PATH)} label={section.cta} variant="secondary" class="mt-10" />
+  </Section>
+)}

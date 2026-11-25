@@ -22,7 +22,7 @@ export const execNav = [
   { label: 'How we work', href: '#how-we-work' },
   { label: 'What you receive', href: '#what-you-receive' },
   { label: 'FAQ', href: '#faq' },
-  { label: 'Case studies', href: 'case-studies/' },
+  { label: 'Writing', href: 'writing/' },
   { label: 'About', href: '#about' },
 ];
 
@@ -249,12 +249,12 @@ export const execAboutPoints = [
   },
 ];
 
-/** Home-page section and the /case-studies/ index. The entries themselves are Markdown files in src/content/case-studies/. */
-export const execCaseStudiesSection = {
-  title: 'Client work',
+/** Home-page Latest band and the /writing/ index. The entries themselves are Markdown files in src/content/writing/. */
+export const execWritingSection = {
+  title: 'Writing',
   intro:
-    'Engagements we can describe. Client names are withheld where the client asks; the problem, what we built, and what was handed over are as delivered.', // CONFIRM wording with each client before go-live
-  cta: 'All case studies',
+    'Case studies from engagements we can describe, notes from the work, and guides to how we build. Client names are withheld where the client asks; the problem, what we built, and what was handed over are as delivered.', // CONFIRM wording with each client before go-live
+  cta: 'All writing',
 };
 
 export const execContact = {
@@ -274,6 +274,6 @@ export const execFooter = {
     'Private models and fine-tuning',
   ],
   contactHeading: 'Contact',
-  pageLinks: [{ label: 'Case studies', href: 'case-studies/' }],
+  pageLinks: [{ label: 'Writing', href: 'writing/' }],
   legalLinks: [{ label: 'Privacy Policy', href: 'privacy/' }],
 };
